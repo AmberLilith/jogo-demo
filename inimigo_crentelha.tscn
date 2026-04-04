@@ -51,6 +51,7 @@ animations = [{
 script = ExtResource("1_xvegb")
 
 [node name="CollisonInimigo" type="CollisionShape2D" parent="." unique_id=316373342]
+position = Vector2(70, 144)
 shape = SubResource("RectangleShape2D_otwa2")
 
 [node name="AnimatedSpriteInimigo" type="AnimatedSprite2D" parent="." unique_id=1675836665]
@@ -59,3 +60,4 @@ scale = Vector2(0.46459112, 0.37415048)
 sprite_frames = SubResource("SpriteFrames_8wx08")
 animation = &"atack"
 frame_progress = 0.37299076
+centered = false

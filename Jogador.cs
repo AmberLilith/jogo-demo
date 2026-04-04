@@ -11,9 +11,14 @@ public partial class Jogador : CharacterBody2D
 	private AnimatedSprite2D _animacao;
 	private bool _estaMorto = false;
 
+	public int Points = 0;
+private Label _ScoreText;
+
 	public override void _Ready()
 	{
 		_animacao = GetNode<AnimatedSprite2D>("AnimatedSpriteJogador");
+		_ScoreText = GetNode<Label>("../HUD/Placar");
+		UpdateScore();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -99,4 +104,18 @@ public partial class Jogador : CharacterBody2D
 		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
 		GetTree().ReloadCurrentScene();
 	}
+
+	public void AddPoints(int value)
+{
+	Points += value;
+	UpdateScore();
+}
+
+private void UpdateScore()
+{
+	if (_ScoreText != null)
+	{
+		_ScoreText.Text = "Bebezinhas coletadas: " + Points;
+	}
+}
 }
