@@ -27,7 +27,7 @@ private Label _ScoreText;
 		bool estaCorrendo = Input.IsActionPressed("run");
 		
 		// Define qual velocidade usar
-		float velocidadeAtual = estaCorrendo ? RunSpeed : Speed;
+		float currentSpeed = estaCorrendo ? RunSpeed : Speed;
 		
 		if (_estaMorto)
 		{
@@ -44,19 +44,19 @@ private Label _ScoreText;
 
 		if (!IsOnFloor())
 			velocity.Y += Gravity * (float)delta;
-
+GD.Print("Estou no chão? " + IsOnFloor());
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 			velocity.Y = JumpVelocity;
 
 
 		if (direction != Vector2.Zero)
 		{
-			velocity.X = direction.X * Speed;
+			velocity.X = direction.X * currentSpeed;
 			_animacao.FlipH = direction.X < 0;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, currentSpeed);
 		}
 
 		Velocity = velocity;
@@ -87,7 +87,7 @@ private Label _ScoreText;
 		{
 			var colisao = GetSlideCollision(i);
 			var objetoTocado = colisao.GetCollider();
-			if (objetoTocado is Node nodo && nodo.IsInGroup("inimigos"))
+			if (objetoTocado is Node nodo && nodo.IsInGroup("inimigos"))//Garantir que todo inimigo tenha o grupo "inimigos" no Inspetor
 			{
 				Morrer();
 				break;
@@ -95,7 +95,7 @@ private Label _ScoreText;
 		}
 	}
 
-	private async void Morrer()
+	public async void Morrer()
 	{
 		if (_estaMorto) return;
 		_estaMorto = true;

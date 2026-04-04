@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Inimigo : CharacterBody2D
+public partial class InimigoCrentelha : CharacterBody2D
 {
 	[Export] public float DistanciaAtaque = 400.0f; // distância pra detectar o jogador
 

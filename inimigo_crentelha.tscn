@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dxl2pthjog7ut"]
 
-[ext_resource type="Script" uid="uid://dx62hxjoolw3i" path="res://Inimigo.cs" id="1_xvegb"]
+[ext_resource type="Script" uid="uid://cpk5xhl8x60d4" path="res://InimigoCrentelha.cs" id="1_xvegb"]
 [ext_resource type="Texture2D" uid="uid://cuvjrq8u8ybqd" path="res://inimigo.png" id="2_jq2uo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otwa2"]
-size = Vector2(84, 203.5)
+size = Vector2(45, 109.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wx08"]
 atlas = ExtResource("2_jq2uo")
@@ -47,16 +47,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Inimigo" type="CharacterBody2D" unique_id=707616710 groups=["inimigos"]]
+[node name="InimigoCrentelha" type="CharacterBody2D" unique_id=707616710 groups=["inimigos"]]
+position = Vector2(-1, 1)
 script = ExtResource("1_xvegb")
 
 [node name="CollisonInimigo" type="CollisionShape2D" parent="." unique_id=316373342]
-position = Vector2(70, 144)
+position = Vector2(54.5, 190.875)
 shape = SubResource("RectangleShape2D_otwa2")
 
 [node name="AnimatedSpriteInimigo" type="AnimatedSprite2D" parent="." unique_id=1675836665]
 visible = false
-scale = Vector2(0.46459112, 0.37415048)
+position = Vector2(1.0000001, 46)
+scale = Vector2(0.46114284, 0.30402854)
 sprite_frames = SubResource("SpriteFrames_8wx08")
 animation = &"atack"
 frame_progress = 0.37299076

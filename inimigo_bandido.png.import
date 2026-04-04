@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsdfdvr7dm8ji"
-path="res://.godot/imported/bloco baixo fino.png-e154afd2fe62b1856205c838e2fe451a.ctex"
+uid="uid://b11qphc0rjel3"
+path="res://.godot/imported/inimigo_bandido.png-4b551d4d593987726d8547b717a94270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocos/bloco baixo fino.png"
-dest_files=["res://.godot/imported/bloco baixo fino.png-e154afd2fe62b1856205c838e2fe451a.ctex"]
+source_file="res://inimigo_bandido.png"
+dest_files=["res://.godot/imported/inimigo_bandido.png-4b551d4d593987726d8547b717a94270.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxnwambimtoi2"
-path="res://.godot/imported/bloco alto medio.png-0625df561c0cbba31300e265abdc6361.ctex"
+uid="uid://cw2i8e7pe3eb6"
+path="res://.godot/imported/inimigo_funqueiro.png-4225defa17fdaf28236667eb19adcb54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocos/bloco alto medio.png"
-dest_files=["res://.godot/imported/bloco alto medio.png-0625df561c0cbba31300e265abdc6361.ctex"]
+source_file="res://inimigo_funqueiro.png"
+dest_files=["res://.godot/imported/inimigo_funqueiro.png-4225defa17fdaf28236667eb19adcb54.ctex"]
 
 [params]
 

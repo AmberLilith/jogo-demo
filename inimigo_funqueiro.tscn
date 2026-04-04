@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dlpnuuyd0jkpt"]
+
+[ext_resource type="Script" uid="uid://1sa4vtylmjf4" path="res://InimigoFunqueiro.cs" id="1_ef5aw"]
+[ext_resource type="Texture2D" uid="uid://cw2i8e7pe3eb6" path="res://inimigo_funqueiro.png" id="1_nb203"]
+[ext_resource type="PackedScene" uid="uid://giq5ldlrflkd" path="res://bullet.tscn" id="2_pajqg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef5aw"]
+atlas = ExtResource("1_nb203")
+region = Rect2(0, 255, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pajqg"]
+atlas = ExtResource("1_nb203")
+region = Rect2(260, 255, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuacq"]
+atlas = ExtResource("1_nb203")
+region = Rect2(520, 255, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rprh"]
+atlas = ExtResource("1_nb203")
+region = Rect2(520, 255, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whpcf"]
+atlas = ExtResource("1_nb203")
+region = Rect2(780, 255, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct5oo"]
+atlas = ExtResource("1_nb203")
+region = Rect2(0, 0, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niiw8"]
+atlas = ExtResource("1_nb203")
+region = Rect2(260, 0, 260, 255)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rprh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef5aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pajqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuacq")
+}],
+"loop": false,
+"name": &"draw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rprh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whpcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rprh")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct5oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niiw8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef5aw"]
+size = Vector2(69, 225)
+
+[node name="inimigoFunqueiro" type="CharacterBody2D" unique_id=906548472 groups=["inimigos"]]
+script = ExtResource("1_ef5aw")
+Bullet = ExtResource("2_pajqg")
+
+[node name="AnimatedInimigoFunqueiro" type="AnimatedSprite2D" parent="." unique_id=2026254009]
+position = Vector2(62.5, 37.750004)
+scale = Vector2(0.58076924, 0.7039215)
+sprite_frames = SubResource("SpriteFrames_0rprh")
+animation = &"fire"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=32232666]
+position = Vector2(40, 17)
+
+[node name="Timer" type="Timer" parent="." unique_id=1820099516]
+wait_time = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=783731218]
+position = Vector2(103.5, 22.5)
+shape = SubResource("RectangleShape2D_ef5aw")

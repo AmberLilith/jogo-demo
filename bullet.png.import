@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cywi65lb5tcwm"
-path="res://.godot/imported/bloco alto fino.png-7070607c219550abeaf01f3efda269c3.ctex"
+uid="uid://bnnkpj34fnky8"
+path="res://.godot/imported/bullet.png-ff1424653e10246c11e3724e402c519e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocos/bloco alto fino.png"
-dest_files=["res://.godot/imported/bloco alto fino.png-7070607c219550abeaf01f3efda269c3.ctex"]
+source_file="res://bullet.png"
+dest_files=["res://.godot/imported/bullet.png-ff1424653e10246c11e3724e402c519e.ctex"]
 
 [params]
 
