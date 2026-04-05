@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_te6x4"]
 radius = 305.4048
 
-[node name="Node2D" type="Node2D" unique_id=1713484407]
+[node name="ExtraLife" type="Node2D" unique_id=1713484407]
 
 [node name="ExtraLife" type="Area2D" parent="." unique_id=1706968775]
 script = ExtResource("1_kp6il")
