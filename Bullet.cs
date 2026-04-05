@@ -26,14 +26,14 @@ public partial class Bullet : Area2D
 		// Se a bala bater no próprio inimigo que atirou, ignora e não faz nada
 		if (body.IsInGroup("inimigos")) return;
 
-		// Se bater no jogador...
-		if (body is Jogador jogador)
+		// Se bater no Player...
+		if (body is Player Player)
 		{
-			// O jogador morre!
-			jogador.Morrer();
+			// O Player morre!
+			Player.Die();
 		}
 
-		// Independente de bater no jogador, no chão ou na parede de vidro... a bala se destrói!
+		// Independente de bater no Player, no chão ou na parede de vidro... a bala se destrói!
 		QueueFree();
 	}
 }

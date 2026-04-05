@@ -15,6 +15,10 @@ run/main_scene="uid://b1wllxx8psq74"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://cb6itdgbucys8"
+
 [dotnet]
 
 project/assembly_name="MeuPrimeiroJogo"

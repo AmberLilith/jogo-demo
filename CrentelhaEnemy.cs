@@ -1,25 +1,25 @@
 using Godot;
 using System;
 
-public partial class InimigoCrentelha : CharacterBody2D
+public partial class CrentelhaEnemy : CharacterBody2D
 {
-	[Export] public float DistanciaAtaque = 400.0f; // distância pra detectar o jogador
+	[Export] public float DistanciaAtaque = 400.0f; // distância pra detectar o Player
 
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	private AnimatedSprite2D _animacao ;
-	private Node2D _jogador;
+	private Node2D _Player;
 
 	public override void _Ready()
 	{
 		// Pega a referência correta
-		_animacao = GetNode<AnimatedSprite2D>("AnimatedSpriteInimigo");
+		_animacao = GetNode<AnimatedSprite2D>("CrentelhaEnemyAnimation");
 		
 		// Garante que o inimigo sempre comece relaxado (idle)
 		_animacao.Play("idle");
 
-		// Busca o jogador na cena pelo nome do grupo
-		_jogador = GetTree().GetFirstNodeInGroup("jogador") as Node2D;
+		// Busca o Player na cena pelo nome do grupo
+		_Player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -33,10 +33,10 @@ public partial class InimigoCrentelha : CharacterBody2D
 		Velocity = vel;
 		MoveAndSlide();
 
-		// Detecta distância até o jogador
-		if (_jogador != null)
+		// Detecta distância até o Player
+		if (_Player != null)
 		{
-			float distancia = GlobalPosition.DistanceTo(_jogador.GlobalPosition);
+			float distancia = GlobalPosition.DistanceTo(_Player.GlobalPosition);
 
 			if (distancia < DistanciaAtaque)
 			{
@@ -47,8 +47,8 @@ public partial class InimigoCrentelha : CharacterBody2D
 				_animacao.Play("idle"); // fica de boa
 			}
 
-			// Vira pra olhar pro jogador USANDO A VARIÁVEL CORRETA
-			_animacao.FlipH = _jogador.GlobalPosition.X > this.GlobalPosition.X;
+			// Vira pra olhar pro Player USANDO A VARIÁVEL CORRETA
+			_animacao.FlipH = _Player.GlobalPosition.X > this.GlobalPosition.X;
 		}
 	}
 }

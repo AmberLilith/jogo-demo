@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://b3686ngo3itvd"]
+[gd_scene format=3 uid="uid://bwuaotorhsu0a"]
 
-[ext_resource type="Script" uid="uid://c8rfomd7rm11y" path="res://CollectibleItem.cs" id="1_sh2v4"]
-[ext_resource type="Texture2D" uid="uid://dl7ya2vph7b2w" path="res://judite.png" id="2_b5ob8"]
+[ext_resource type="Script" uid="uid://c8rfomd7rm11y" path="res://JuditePoints.cs" id="1_i2sjh"]
+[ext_resource type="Texture2D" uid="uid://do7wnw1deri5a" path="res://virginia.png" id="2_i2sjh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
 radius = 257.41565
@@ -9,12 +9,12 @@ radius = 257.41565
 [node name="Node2D" type="Node2D" unique_id=618305527]
 
 [node name="CollectibleItem" type="Area2D" parent="." unique_id=1502595574]
-script = ExtResource("1_sh2v4")
+script = ExtResource("1_i2sjh")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollectibleItem" unique_id=1998840307]
 position = Vector2(2.0000153, 0)
 scale = Vector2(0.18287037, 0.1388889)
-texture = ExtResource("2_b5ob8")
+texture = ExtResource("2_i2sjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleItem" unique_id=912152848]
 position = Vector2(2.0000153, 0)

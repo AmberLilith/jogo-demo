@@ -4,7 +4,7 @@ using System;
 
 
 
-public partial class InimigoFunqueiro : CharacterBody2D
+public partial class FunkEnemy : CharacterBody2D
 
 {
 
@@ -32,7 +32,7 @@ public partial class InimigoFunqueiro : CharacterBody2D
 
 	private AnimatedSprite2D _animacao;
 
-	private Node2D _jogador;
+	private Node2D _Player;
 
 
 
@@ -48,7 +48,7 @@ public partial class InimigoFunqueiro : CharacterBody2D
 
 		// Pega a referência correta
 
-		_animacao = GetNode<AnimatedSprite2D>("AnimatedInimigoFunqueiro");
+		_animacao = GetNode<AnimatedSprite2D>("FunkEnemyAnimation");
 
 
 
@@ -66,9 +66,9 @@ public partial class InimigoFunqueiro : CharacterBody2D
 
 
 
-		// Busca o jogador na cena pelo nome do grupo
+		// Busca o Player na cena pelo nome do grupo
 
-		_jogador = GetTree().GetFirstNodeInGroup("jogador") as Node2D;
+		_Player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
 
 
 
@@ -136,13 +136,13 @@ public partial class InimigoFunqueiro : CharacterBody2D
 
 
 
-		// Detecta distância até o jogador
+		// Detecta distância até o Player
 
-		if (_jogador != null)
+		if (_Player != null)
 
 		{
 
-			float distancia = GlobalPosition.DistanceTo(_jogador.GlobalPosition);
+			float distancia = GlobalPosition.DistanceTo(_Player.GlobalPosition);
 
 
 
@@ -156,7 +156,7 @@ public partial class InimigoFunqueiro : CharacterBody2D
 
 
 
-				// Se o cronômetro estiver parado, o jogador acabou de entrar na área!
+				// Se o cronômetro estiver parado, o Player acabou de entrar na área!
 
 				if (_timerAtirar.IsStopped())
 
@@ -170,13 +170,13 @@ public partial class InimigoFunqueiro : CharacterBody2D
 
 			}
 
-			// 2º TESTE: O jogador está longe, mas dá pra ver? (Menor que 400)
+			// 2º TESTE: O Player está longe, mas dá pra ver? (Menor que 400)
 
 			else if (distancia < AtackDistance)
 
 			{
 
-				_timerAtirar.Stop(); // O jogador se afastou, MANDA PARAR DE ATIRAR!
+				_timerAtirar.Stop(); // O Player se afastou, MANDA PARAR DE ATIRAR!
 
 
 
@@ -208,9 +208,9 @@ public partial class InimigoFunqueiro : CharacterBody2D
 
 
 
-			// Vira pra olhar pro jogador USANDO A VARIÁVEL CORRETA
+			// Vira pra olhar pro Player USANDO A VARIÁVEL CORRETA
 
-			_animacao.FlipH = _jogador.GlobalPosition.X > this.GlobalPosition.X;
+			_animacao.FlipH = _Player.GlobalPosition.X > this.GlobalPosition.X;
 
 		}
 

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class CollectibleItem : Area2D
+public partial class VirginiaPoints : Area2D
 {
 	// Você pode definir um valor para o item, se quiser
 	[Export] public int Value = 3;
@@ -14,12 +14,12 @@ public partial class CollectibleItem : Area2D
 
 	private void OnBodyEntered(Node2D body)
 {
-	// A mágica do C#: Ele testa se quem entrou é o "Jogador" e já 
-	// cria uma variável chamada 'jogador' para acessarmos os métodos dele!
-	if (body is Jogador jogador) 
+	// A mágica do C#: Ele testa se quem entrou é o "Player" e já 
+	// cria uma variável chamada 'Player' para acessarmos os métodos dele!
+	if (body is Player Player) 
 	{
-		// Envia o valor (1) lá para a conta do jogador
-		jogador.AddPoints(Value); 
+		// Envia o valor (1) lá para a conta do Player
+		Player.AddPoints(Value); 
 		
 		// Destrói a galinha
 		Collect(); 
