@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bajbhsns0fkqe" path="res://jumping.png" id="5_udxuc"]
 [ext_resource type="Texture2D" uid="uid://bw4eyba3c80j2" path="res://running.png" id="6_ikiii"]
 [ext_resource type="Texture2D" uid="uid://dbxq6etnipp6b" path="res://walking.png" id="7_cbp6q"]
+[ext_resource type="Texture2D" uid="uid://xqqvcpixixs1" path="res://images/squatting.png" id="7_udxuc"]
 [ext_resource type="PackedScene" uid="uid://dxl2pthjog7ut" path="res://crentelha_enemy.tscn" id="8_26xuy"]
 [ext_resource type="Texture2D" uid="uid://dijv2fu5x6526" path="res://obstacles.png" id="9_bc84e"]
 [ext_resource type="PackedScene" uid="uid://b3686ngo3itvd" path="res://judite_points.tscn" id="10_wukud"]
@@ -18,7 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://qs6gk42tkr7p" path="res://checkpoint.tscn" id="16_2u3nc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
-size = Vector2(288.3333, 543.3333)
+size = Vector2(288.3333, 550)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udxuc"]
+size = Vector2(288.3333, 310.00003)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwdvv"]
 atlas = ExtResource("3_hiqwa")
@@ -99,6 +103,18 @@ region = Rect2(352, 0, 176, 220)
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4olq"]
 atlas = ExtResource("6_ikiii")
 region = Rect2(528, 0, 176, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udxuc"]
+atlas = ExtResource("7_udxuc")
+region = Rect2(0, 0, 100, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikiii"]
+atlas = ExtResource("7_udxuc")
+region = Rect2(100, 0, 100, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbp6q"]
+atlas = ExtResource("7_udxuc")
+region = Rect2(200, 0, 100, 220)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slyl3"]
 atlas = ExtResource("7_cbp6q")
@@ -196,6 +212,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udxuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikiii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbp6q")
+}],
+"loop": false,
+"name": &"squatting",
 "speed": 5.0
 }, {
 "frames": [{
@@ -4509,14 +4539,19 @@ position = Vector2(3200, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="Player" unique_id=116075104]
-position = Vector2(0, 5)
+[node name="PlayerDefaultCollision" type="CollisionShape2D" parent="Player" unique_id=116075104]
+position = Vector2(-33.333313, 9.9999695)
 shape = SubResource("RectangleShape2D_xwo6f")
 
+[node name="PlayerSquattingCollision" type="CollisionShape2D" parent="Player" unique_id=20854465]
+position = Vector2(-13.333618, 96.666626)
+shape = SubResource("RectangleShape2D_udxuc")
+
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="Player" unique_id=1949477913]
+position = Vector2(-33.33332, -26.666666)
 scale = Vector2(2.8656435, 2.8030305)
 sprite_frames = SubResource("SpriteFrames_qobow")
-animation = &"jump"
+animation = &"walk"
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1780601059]
 position = Vector2(-3.333, -596.667)

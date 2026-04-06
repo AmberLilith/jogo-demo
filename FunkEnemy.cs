@@ -39,179 +39,90 @@ public partial class FunkEnemy : CharacterBody2D
 	private Timer _timerAtirar;
 
 
-
-
-
-	public override void _Ready()
-
-	{
-
-		// Pega a referência correta
-
-		_animacao = GetNode<AnimatedSprite2D>("FunkEnemyAnimation");
-
-
-
-		_timerAtirar = GetNode<Timer>("Timer");
-
-		_timerAtirar.Timeout += Atirar;
-
-
-
-		// Garante que o inimigo sempre comece relaxado (idle)
-
-
-
-		_animacao.Play("idle");
-
-
-
-		// Busca o Player na cena pelo nome do grupo
-
-		_Player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
-
-
-
-		// 2. Avisa o código onde está o Marker2D
-
-		_gunBarrel = GetNode<Marker2D>("Marker2D");
-
-	}
-
-
-
 private void Atirar()
 {
     if (Bullet == null || _Player == null) return;
 
-    // 1. Instancia como Node2D primeiro para não dar erro de conversão
     var instance = Bullet.Instantiate();
-    GD.Print("Instanciei um nó do tipo: " + instance.GetType().Name);
-    // 2. Tenta encontrar o script Bullet dentro dessa instância
-    if (instance is Bullet newBullet) 
+    
+    if (instance is Bullet newBullet)
     {
         newBullet.GlobalPosition = _gunBarrel.GlobalPosition;
 
-		//Em vez de apontar para a GlobalPosition (pés), 
-        // atinge o meio do corpo (subtraindo uns 30 pixels no Y)
-        Vector2 alvo = _Player.GlobalPosition + new Vector2(0, -30);
-
-        // Calcula a direção
-        Vector2 direcao = (_Player.GlobalPosition - _gunBarrel.GlobalPosition).Normalized();
+        // ✅ Direção horizontal fixa baseada em para onde o inimigo está virado
+        // FlipH = true significa que está virado para a DIREITA
+        Vector2 direcao = _animacao.FlipH ? Vector2.Right : Vector2.Left;
         newBullet.Direction = direcao;
 
-		GD.Print($"Bala criada em: {newBullet.GlobalPosition} | Direção: {newBullet.Direction}");
+        GD.Print($"Bala criada em: {newBullet.GlobalPosition} | Direção: {newBullet.Direction}");
 
         GetTree().Root.AddChild(newBullet);
     }
-    else 
+    else
     {
         GD.PrintErr("ERRO: A cena Bullet.tscn não tem o script Bullet.cs anexado!");
     }
 }
 
+	public override void _Ready()
+{
+    _animacao = GetNode<AnimatedSprite2D>("FunkEnemyAnimation");
+    _gunBarrel = GetNode<Marker2D>("Marker2D");
+    _Player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
 
+    // ✅ Remove o Timer — não precisamos mais dele
+    // Conecta o sinal de fim de animação
+    _animacao.AnimationFinished += OnAnimationFinished;
 
-	public override void _PhysicsProcess(double delta)
+    _animacao.Play("idle");
+}
 
-	{
+// ✅ Dispara a bala quando a animação "fire" termina um ciclo
+private void OnAnimationFinished()
+{
+    if (_animacao.Animation == "fire")
+    {
+        Atirar();
+        _animacao.Play("fire"); // Reinicia a animação para o próximo ciclo
+    }
+}
 
-		Vector2 vel = Velocity;
+public override void _PhysicsProcess(double delta)
+{
+    Vector2 vel = Velocity;
+    if (!IsOnFloor())
+        vel.Y += Gravity * (float)delta;
+    Velocity = vel;
+    MoveAndSlide();
 
+    if (_Player != null)
+    {
+        float distancia = GlobalPosition.DistanceTo(_Player.GlobalPosition);
 
+        if (distancia < FireDistance)
+        {
+            // ✅ Só inicia "fire" se ainda não estiver tocando
+            if (_animacao.Animation != "fire")
+            {
+                _animacao.SpeedScale = 1.0f;
+                _animacao.Play("fire");
+            }
+        }
+        else if (distancia < AtackDistance)
+        {
+            if (_animacao.Animation != "draw")
+            {
+                _animacao.SpeedScale = 1.0f;
+                _animacao.Play("draw");
+            }
+        }
+        else
+        {
+            _animacao.SpeedScale = 0.2f;
+            _animacao.Play("idle");
+        }
 
-		// Gravidade (pra não flutuar)
-
-		if (!IsOnFloor())
-
-			vel.Y += Gravity * (float)delta;
-
-
-
-		Velocity = vel;
-
-		MoveAndSlide();
-
-
-
-		// Detecta distância até o Player
-
-		if (_Player != null)
-
-		{
-
-			float distancia = GlobalPosition.DistanceTo(_Player.GlobalPosition);
-
-
-
-			if (distancia < FireDistance)
-
-			{
-
-				_animacao.SpeedScale = 1.0f;
-
-				_animacao.Play("fire");
-
-
-
-				// Se o cronômetro estiver parado, o Player acabou de entrar na área!
-
-				if (_timerAtirar.IsStopped())
-
-				{
-
-					Atirar(); // Dá o primeiro tiro na hora, sem esperar!
-
-					_timerAtirar.Start(); // Liga o cronômetro (para atirar de novo a cada X segundos)
-
-				}
-
-			}
-
-			// 2º TESTE: O Player está longe, mas dá pra ver? (Menor que 400)
-
-			else if (distancia < AtackDistance)
-
-			{
-
-				_timerAtirar.Stop(); // O Player se afastou, MANDA PARAR DE ATIRAR!
-
-
-
-				if (_animacao.Animation != "draw")
-
-				{
-
-					_animacao.SpeedScale = 1.0f;
-
-					_animacao.Play("draw");
-
-				}
-
-			}
-
-			// 3º TESTE: Tá longe demais. Fica de boa.
-
-			else
-
-			{
-
-				_timerAtirar.Stop(); // MANDA PARAR DE ATIRAR!
-
-				_animacao.SpeedScale = 0.2f;
-
-				_animacao.Play("idle");
-
-			}
-
-
-
-			// Vira pra olhar pro Player USANDO A VARIÁVEL CORRETA
-
-			_animacao.FlipH = _Player.GlobalPosition.X > this.GlobalPosition.X;
-
-		}
-
-	}
-
+        _animacao.FlipH = _Player.GlobalPosition.X > this.GlobalPosition.X;
+    }
+}
 }

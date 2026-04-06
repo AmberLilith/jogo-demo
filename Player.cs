@@ -11,11 +11,18 @@ public partial class Player : CharacterBody2D
 
 
 	private AnimatedSprite2D _animation;
+
+	private CollisionShape2D _collisionShape;
 	private bool _isDead = false;
 
 	public int Points = 0;
 	private Label _ScoreText;
 	private Label _LifesText;
+
+	private CollisionShape2D _colisaoEmPe;
+	private CollisionShape2D _colisaoAgachado;
+
+	private bool _isInvincible = false;
 
 	public override void _Ready()
 	{
@@ -25,6 +32,9 @@ public partial class Player : CharacterBody2D
 		}
 		_gameOverScreen = GetParent().GetNode<CanvasLayer>("GameOverScreen");
 		_animation = GetNode<AnimatedSprite2D>("PlayerAnimation");
+		_colisaoEmPe = GetNode<CollisionShape2D>("PlayerDefaultCollision");
+		_colisaoAgachado = GetNode<CollisionShape2D>("PlayerSquattingCollision");
+
 		_ScoreText = GetNode<Label>("../HUD//HBoxContainer/Score");
 		_LifesText = GetNode<Label>("../HUD/HBoxContainer/Lifes");
 		_gameOverScreen = GetParent().GetNode<CanvasLayer>("GameOverScreen");
@@ -36,6 +46,8 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		bool isRunning = Input.IsActionPressed("run");
+		bool isSquatting = Input.IsActionPressed("squat");
+		
 
 		// Define qual velocidade usar
 		float currentSpeed = isRunning ? RunSpeed : Speed;
@@ -72,25 +84,52 @@ public partial class Player : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 
-
 		if (!IsOnFloor())
-			_animation.Play("jump");
-		else if (direction != Vector2.Zero)
-			if (isRunning)
-			{
-				_animation.SpeedScale = 2.0f;
-				_animation.Play("run");
-			}
-			else
-			{
-				_animation.SpeedScale = 1.0f;
-				_animation.Play("walk");
-			}
-		else
-		{
-			_animation.SpeedScale = 0.2f;
-			_animation.Play("idle");
-		}
+{
+    // Só toca "jump" se NÃO estiver agachado
+    if (!isSquatting)
+    {
+        _animation.Play("jump");
+        _colisaoEmPe.SetDeferred("disabled", false);
+        _colisaoAgachado.SetDeferred("disabled", true);
+    }
+}
+else if (isSquatting)
+{
+    // Agachado no chão — tem prioridade sobre andar/correr
+    if(_animation.Animation != "squatting") // Evita ficar resetando a animação toda hora
+	{
+		_animation.SpeedScale = 1.0f;
+    _animation.Play("squatting");
+    _colisaoEmPe.SetDeferred("disabled", true);
+    _colisaoAgachado.SetDeferred("disabled", false);
+	}
+}
+else if (direction != Vector2.Zero)
+{
+    // Movendo no chão
+    _colisaoEmPe.SetDeferred("disabled", false);
+    _colisaoAgachado.SetDeferred("disabled", true);
+
+    if (isRunning)
+    {
+        _animation.SpeedScale = 2.0f;
+        _animation.Play("run");
+    }
+    else
+    {
+        _animation.SpeedScale = 1.0f;
+        _animation.Play("walk");
+    }
+}
+else
+{
+    // Parado no chão
+    _animation.SpeedScale = 0.2f;
+    _animation.Play("idle");
+    _colisaoEmPe.SetDeferred("disabled", false);
+    _colisaoAgachado.SetDeferred("disabled", true);
+}
 
 
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
@@ -105,41 +144,50 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public async void Die()
-	{
-		if (_isDead) return;
-		_isDead = true;
-		GameManager.Instance.CurrentLives--;
-		UpdateLifes();
-		_animation.SpeedScale = 0.5f;
-		_animation.Play("die");
-		GetNode<CollisionShape2D>("PlayerCollision").SetDeferred("disabled", true);
-		Velocity = new Vector2(0, -400);
-		// 2. Espera o tempo da queda dramática
-		await ToSignal(GetTree().CreateTimer(1.5f), SceneTreeTimer.SignalName.Timeout);
 
-		// 3. DECISÃO: Reaparecer ou Game Over?
-		if (GameManager.Instance.CurrentLives > 0)
-		{
-			Respawn();
-		}
-		else
-		{
-			ShowGameOver();
-		}
-	}
+public async void Die()
+{
+    if (_isDead || _isInvincible) return; // ✅ Invencível também bloqueia morte
+    _isDead = true;
+    GameManager.Instance.CurrentLives--;
+    UpdateLifes();
+    _animation.SpeedScale = 0.5f;
+    _animation.Play("die");
+    _colisaoEmPe.SetDeferred("disabled", true);
+    _colisaoAgachado.SetDeferred("disabled", true);
+    Velocity = new Vector2(0, -400);
 
-	private void Respawn()
-	{
-		_isDead = false;
-		// Reativa a colisão
-		GetNode<CollisionShape2D>("PlayerCollision").SetDeferred("disabled", false);
+    await ToSignal(GetTree().CreateTimer(1.5f), SceneTreeTimer.SignalName.Timeout);
 
-		// Volta para o início da fase ou um checkpoint
-		// Para simplificar agora, vamos apenas recarregar a cena, 
-		// mas precisamos salvar as vidas atuais!
-		GlobalPosition = GameManager.Instance.LastCheckpointPos;
-	}
+    if (GameManager.Instance.CurrentLives > 0)
+        Respawn();
+    else
+        ShowGameOver();
+}
+
+private async void Respawn()
+{
+    _isDead = false;
+    _isInvincible = true; // ✅ Ativa invencibilidade
+
+    _colisaoEmPe.SetDeferred("disabled", false);
+    _colisaoAgachado.SetDeferred("disabled", true);
+    _animation.SpeedScale = 1.0f;
+    Velocity = Vector2.Zero;
+    GlobalPosition = GameManager.Instance.LastCheckpointPos;
+
+    // ✅ Pisca o sprite para indicar invencibilidade
+    for (int i = 0; i < 6; i++)
+    {
+        _animation.Modulate = new Color(1, 1, 1, 0.3f); // transparente
+        await ToSignal(GetTree().CreateTimer(0.2f), SceneTreeTimer.SignalName.Timeout);
+        _animation.Modulate = new Color(1, 1, 1, 1.0f); // visível
+        await ToSignal(GetTree().CreateTimer(0.2f), SceneTreeTimer.SignalName.Timeout);
+    }
+
+    _isInvincible = false; // ✅ Desativa invencibilidade após piscar
+    _animation.Play("idle");
+}
 
 	private void ShowGameOver()
 	{
