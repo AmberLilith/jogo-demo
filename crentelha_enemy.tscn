@@ -47,11 +47,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="crentelha_enemy" type="CharacterBody2D" unique_id=707616710 groups=["inimigos"]]
+[node name="CrentelhaEnemy" type="CharacterBody2D" unique_id=707616710 groups=["enemies"]]
 position = Vector2(-1, 1)
 script = ExtResource("1_xvegb")
 
-[node name="CrentelhaEnemyCollision" type="CollisionShape2D" parent="." unique_id=316373342]
+[node name="CrentelhaEnemyCollision" type="CollisionShape2D" parent="." unique_id=316373342 groups=["enemies"]]
 position = Vector2(54.5, 190.875)
 shape = SubResource("RectangleShape2D_otwa2")
 

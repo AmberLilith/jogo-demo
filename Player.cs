@@ -7,7 +7,6 @@ public partial class Player : CharacterBody2D
 	public const float RunSpeed = 400.0f;
 	public const float JumpVelocity = -900.0f;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	private GameManager _gameManager;
 	private CanvasLayer _gameOverScreen;
 
 
@@ -20,11 +19,14 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		if (GameManager.Instance.LastCheckpointPos == Vector2.Zero)
+		{
+			GameManager.Instance.LastCheckpointPos = GlobalPosition;
+		}
 		_gameOverScreen = GetParent().GetNode<CanvasLayer>("GameOverScreen");
 		_animation = GetNode<AnimatedSprite2D>("PlayerAnimation");
 		_ScoreText = GetNode<Label>("../HUD//HBoxContainer/Score");
 		_LifesText = GetNode<Label>("../HUD/HBoxContainer/Lifes");
-		_gameManager = GetNode<GameManager>("/root/GameManager");
 		_gameOverScreen = GetParent().GetNode<CanvasLayer>("GameOverScreen");
 		UpdateScore();
 		UpdateLifes();
@@ -107,49 +109,46 @@ public partial class Player : CharacterBody2D
 	{
 		if (_isDead) return;
 		_isDead = true;
-		_gameManager.CurrentLives--;
+		GameManager.Instance.CurrentLives--;
+		UpdateLifes();
 		_animation.SpeedScale = 0.5f;
 		_animation.Play("die");
-	GetNode<CollisionShape2D>("PlayerCollision").SetDeferred("disabled", true);
-	Velocity = new Vector2(0, -400);
-	// 2. Espera o tempo da queda dramática
-	await ToSignal(GetTree().CreateTimer(1.5f), SceneTreeTimer.SignalName.Timeout);
+		GetNode<CollisionShape2D>("PlayerCollision").SetDeferred("disabled", true);
+		Velocity = new Vector2(0, -400);
+		// 2. Espera o tempo da queda dramática
+		await ToSignal(GetTree().CreateTimer(1.5f), SceneTreeTimer.SignalName.Timeout);
 
-	// 3. DECISÃO: Reaparecer ou Game Over?
-	if (_gameManager.CurrentLives > 0)
-	{
-		Respawn();
-	}
-	else
-	{
-		ShowGameOver();
-	}
+		// 3. DECISÃO: Reaparecer ou Game Over?
+		if (GameManager.Instance.CurrentLives > 0)
+		{
+			Respawn();
+		}
+		else
+		{
+			ShowGameOver();
+		}
 	}
 
 	private void Respawn()
-{
-	_isDead = false;
-	// Reativa a colisão
-	GetNode<CollisionShape2D>("PlayerCollision").SetDeferred("disabled", false);
-	
-	// Volta para o início da fase ou um checkpoint
-	// Para simplificar agora, vamos apenas recarregar a cena, 
-	// mas precisamos salvar as vidas atuais!
-	GetTree().ReloadCurrentScene(); 
-	
-	// NOTA: Se você der ReloadCurrentScene, as vidas voltam para 3. 
-	// Para manter as vidas entre cenas, precisaríamos de um script "Global". 
-	// Quer que eu te ensine a fazer esse Global (Autoload) agora?
-}
-
-private void ShowGameOver()
-{
-	GetTree().Paused = true;
-	if (_gameOverScreen != null)
 	{
-		_gameOverScreen.Visible = true;
+		_isDead = false;
+		// Reativa a colisão
+		GetNode<CollisionShape2D>("PlayerCollision").SetDeferred("disabled", false);
+
+		// Volta para o início da fase ou um checkpoint
+		// Para simplificar agora, vamos apenas recarregar a cena, 
+		// mas precisamos salvar as vidas atuais!
+		GlobalPosition = GameManager.Instance.LastCheckpointPos;
 	}
-}
+
+	private void ShowGameOver()
+	{
+		GetTree().Paused = true;
+		if (_gameOverScreen != null)
+		{
+			_gameOverScreen.Visible = true;
+		}
+	}
 
 	public void AddPoints(int value)
 	{
@@ -159,7 +158,7 @@ private void ShowGameOver()
 
 	public void AddLife(int value)
 	{
-		_gameManager.CurrentLives += value;
+		GameManager.Instance.CurrentLives += value;
 		UpdateLifes();
 	}
 
@@ -174,12 +173,13 @@ private void ShowGameOver()
 	private void UpdateLifes()
 	{
 		if (_LifesText != null)
-	{
-		GD.Print("Atualizando label para: " + _gameManager.CurrentLives);
-		_LifesText.Text = "Vidas: " + _gameManager.CurrentLives;
+		{
+			GD.Print("Atualizando label para: " + GameManager.Instance.CurrentLives);
+			_LifesText.Text = "Vidas: " + GameManager.Instance.CurrentLives;
+		}
+		else
+		{
+			GD.Print("Erro: _LifesText é nulo!");
+		}
 	}
-	else {
-		GD.Print("Erro: _LifesText é nulo!");
-	}
-	}		
 }

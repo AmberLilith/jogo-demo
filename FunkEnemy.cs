@@ -18,11 +18,11 @@ public partial class FunkEnemy : CharacterBody2D
 
 
 
-	[Export] public float AtackDistance = 400.0f;
+	[Export] public float AtackDistance = 500.0f;
 
 
 
-	[Export] public float FireDistance = 200.0f;
+	[Export] public float FireDistance = 400.0f;
 
 
 
@@ -80,37 +80,35 @@ public partial class FunkEnemy : CharacterBody2D
 
 
 
-	private void Atirar()
+private void Atirar()
+{
+    if (Bullet == null || _Player == null) return;
 
-	{
+    // 1. Instancia como Node2D primeiro para não dar erro de conversão
+    var instance = Bullet.Instantiate();
+    GD.Print("Instanciei um nó do tipo: " + instance.GetType().Name);
+    // 2. Tenta encontrar o script Bullet dentro dessa instância
+    if (instance is Bullet newBullet) 
+    {
+        newBullet.GlobalPosition = _gunBarrel.GlobalPosition;
 
-		// Verifica se você lembrou de colocar a bala lá no Inspetor
+		//Em vez de apontar para a GlobalPosition (pés), 
+        // atinge o meio do corpo (subtraindo uns 30 pixels no Y)
+        Vector2 alvo = _Player.GlobalPosition + new Vector2(0, -30);
 
-		if (Bullet != null)
+        // Calcula a direção
+        Vector2 direcao = (_Player.GlobalPosition - _gunBarrel.GlobalPosition).Normalized();
+        newBullet.Direction = direcao;
 
-		{
+		GD.Print($"Bala criada em: {newBullet.GlobalPosition} | Direção: {newBullet.Direction}");
 
-			// Cria um clone (uma instância) da bala
-
-			Node2D newBullet = (Node2D)Bullet.Instantiate();
-
-
-
-			// Coloca a bala exatamente na posição do Marker2D
-
-			newBullet.GlobalPosition = _gunBarrel.GlobalPosition;
-
-
-
-			// Adiciona a bala na tela do jogo (GetParent() joga a bala no nó "Mundo",
-
-			// assim ela não fica presa ao corpo do inimigo)
-
-			GetParent().AddChild(newBullet);
-
-		}
-
-	}
+        GetTree().Root.AddChild(newBullet);
+    }
+    else 
+    {
+        GD.PrintErr("ERRO: A cena Bullet.tscn não tem o script Bullet.cs anexado!");
+    }
+}
 
 
 

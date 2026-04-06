@@ -75,24 +75,23 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef5aw"]
-size = Vector2(69, 225)
+size = Vector2(143.25, 153)
 
-[node name="FunkEnemy" type="CharacterBody2D" unique_id=906548472 groups=["inimigos"]]
+[node name="FunkEnemy" type="CharacterBody2D" unique_id=906548472 groups=["enemies"]]
 script = ExtResource("1_ef5aw")
 Bullet = ExtResource("2_pajqg")
 
 [node name="FunkEnemyAnimation" type="AnimatedSprite2D" parent="." unique_id=2026254009]
-position = Vector2(62.5, 37.750004)
 scale = Vector2(0.58076924, 0.7039215)
 sprite_frames = SubResource("SpriteFrames_0rprh")
 animation = &"fire"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=32232666]
-position = Vector2(40, 17)
+position = Vector2(-26, -23)
 
 [node name="Timer" type="Timer" parent="." unique_id=1820099516]
 wait_time = 2.0
 
-[node name="FunkEnemyCollision" type="CollisionShape2D" parent="." unique_id=783731218]
-position = Vector2(103.5, 22.5)
+[node name="FunkEnemyCollision" type="CollisionShape2D" parent="." unique_id=783731218 groups=["enemies"]]
+position = Vector2(12.375, 11.5)
 shape = SubResource("RectangleShape2D_ef5aw")
