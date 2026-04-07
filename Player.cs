@@ -42,109 +42,112 @@ public partial class Player : CharacterBody2D
 		UpdateLifes();
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		bool isRunning = Input.IsActionPressed("run");
-		bool isSquatting = Input.IsActionPressed("squat");
-		
-
-		// Define qual velocidade usar
-		float currentSpeed = isRunning ? RunSpeed : Speed;
-
-		if (_isDead)
-		{
-			Vector2 velMorte = Velocity;
-			if (!IsOnFloor())
-				velMorte.Y += Gravity * (float)delta;
-			velMorte.X = 0;
-			Velocity = velMorte;
-			MoveAndSlide();
-			return;
-		}
-
-		Vector2 velocity = Velocity;
-
-		if (!IsOnFloor())
-			velocity.Y += Gravity * (float)delta;
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
-
-
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * currentSpeed;
-			_animation.FlipH = direction.X < 0;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, currentSpeed);
-		}
-
-		Velocity = velocity;
-		MoveAndSlide();
-
-		if (!IsOnFloor())
+public override void _PhysicsProcess(double delta)
 {
-    // Só toca "jump" se NÃO estiver agachado
-    if (!isSquatting)
+    Vector2 direction = new Vector2(Input.GetAxis("ui_left", "ui_right"), 0);
+    bool isRunning = Input.IsActionPressed("run");
+    bool isSquatting = Input.IsActionPressed("squat");
+
+    float currentSpeed = isRunning ? RunSpeed : Speed;
+
+	_animation.Offset = Vector2.Zero;
+
+    if (_isDead)
     {
-        _animation.Play("jump");
-        _colisaoEmPe.SetDeferred("disabled", false);
-        _colisaoAgachado.SetDeferred("disabled", true);
+        Vector2 velMorte = Velocity;
+        if (!IsOnFloor())
+            velMorte.Y += Gravity * (float)delta;
+        velMorte.X = 0;
+        Velocity = velMorte;
+        MoveAndSlide();
+        return;
     }
-}
-else if (isSquatting)
-{
-    // Agachado no chão — tem prioridade sobre andar/correr
-    if(_animation.Animation != "squatting") // Evita ficar resetando a animação toda hora
-	{
-		_animation.SpeedScale = 1.0f;
-    _animation.Play("squatting");
-    _colisaoEmPe.SetDeferred("disabled", true);
-    _colisaoAgachado.SetDeferred("disabled", false);
-	}
-}
-else if (direction != Vector2.Zero)
-{
-    // Movendo no chão
-    _colisaoEmPe.SetDeferred("disabled", false);
-    _colisaoAgachado.SetDeferred("disabled", true);
 
-    if (isRunning)
+    Vector2 velocity = Velocity;
+
+    if (!IsOnFloor())
+        velocity.Y += Gravity * (float)delta;
+    if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+        velocity.Y = JumpVelocity;
+
+    if (direction != Vector2.Zero)
     {
-        _animation.SpeedScale = 2.0f;
-        _animation.Play("run");
+        velocity.X = direction.X * currentSpeed;
+        _animation.FlipH = direction.X < 0;
     }
     else
     {
+        velocity.X = Mathf.MoveToward(Velocity.X, 0, currentSpeed);
+    }
+
+    Velocity = velocity;
+    MoveAndSlide();
+
+    if (!IsOnFloor())
+    {
+        if (!isSquatting)
+        {
+            _animation.Play("jump");
+            _colisaoEmPe.SetDeferred("disabled", false);
+            _colisaoAgachado.SetDeferred("disabled", true);
+        }
+    }
+    else if (isSquatting && direction != Vector2.Zero)
+    {
+        // Andando agachado
         _animation.SpeedScale = 1.0f;
-        _animation.Play("walk");
+		_animation.Play("walkSquatting");
+		_animation.Offset = new Vector2(0, 475); // Ajusta o offset para alinhar a animação agachada, pois não consegui ajustar
+		_colisaoEmPe.SetDeferred("disabled", true);
+		_colisaoAgachado.SetDeferred("disabled", false);
+    }
+    else if (isSquatting)
+    {
+        // Agachado parado
+        if (_animation.Animation != "squatting")
+        {
+            _animation.SpeedScale = 2.0f;
+            _animation.Play("squatting");
+            _colisaoEmPe.SetDeferred("disabled", true);
+            _colisaoAgachado.SetDeferred("disabled", false);
+        }
+    }
+    else if (direction != Vector2.Zero)
+    {
+        _colisaoEmPe.SetDeferred("disabled", false);
+        _colisaoAgachado.SetDeferred("disabled", true);
+
+        if (isRunning)
+        {
+            _animation.SpeedScale = 2.0f;
+            _animation.Play("run");
+        }
+        else
+        {
+            _animation.SpeedScale = 1.0f;
+            _animation.Play("walk");
+        }
+    }
+    else
+    {
+        // Parado no chão
+        _animation.SpeedScale = 0.2f;
+        _animation.Play("idle");
+        _colisaoEmPe.SetDeferred("disabled", false);
+        _colisaoAgachado.SetDeferred("disabled", true);
+    }
+
+    for (int i = 0; i < GetSlideCollisionCount(); i++)
+    {
+        var collison = GetSlideCollision(i);
+        var tockedObject = collison.GetCollider();
+        if (tockedObject is Node nodo && nodo.IsInGroup("enemies"))
+        {
+            Die();
+            break;
+        }
     }
 }
-else
-{
-    // Parado no chão
-    _animation.SpeedScale = 0.2f;
-    _animation.Play("idle");
-    _colisaoEmPe.SetDeferred("disabled", false);
-    _colisaoAgachado.SetDeferred("disabled", true);
-}
-
-
-		for (int i = 0; i < GetSlideCollisionCount(); i++)
-		{
-			var collison = GetSlideCollision(i);
-			var tockedObject = collison.GetCollider();
-			if (tockedObject is Node nodo && nodo.IsInGroup("enemies"))//Garantir que todo inimigo tenha o grupo "inimigos" no Inspetor
-			{
-				Die();
-				break;
-			}
-		}
-	}
-
-
 public async void Die()
 {
     if (_isDead || _isInvincible) return; // ✅ Invencível também bloqueia morte
