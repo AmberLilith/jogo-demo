@@ -4548,8 +4548,8 @@ position = Vector2(-13.333618, 96.666626)
 shape = SubResource("RectangleShape2D_udxuc")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="Player" unique_id=1949477913]
-position = Vector2(-33.33332, -26.666666)
-scale = Vector2(2.8656435, 2.8030305)
+position = Vector2(-25.025333, 37.49996)
+scale = Vector2(2.6994839, 2.2196975)
 sprite_frames = SubResource("SpriteFrames_qobow")
 animation = &"walk"
 
@@ -4672,6 +4672,6 @@ position = Vector2(2624, 503)
 position = Vector2(4417, 482)
 
 [node name="FunkEnemy" parent="." unique_id=906548472 instance=ExtResource("12_wjb0r")]
-position = Vector2(3697, 492)
+position = Vector2(3933, 470)
 
 [connection signal="pressed" from="GameOverScreen/ColorRect/RestartButton" to="GameOverScreen" method="_on_restart_button_pressed"]

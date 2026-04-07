@@ -104,7 +104,7 @@ public override void _PhysicsProcess(double delta)
             // ✅ Só inicia "fire" se ainda não estiver tocando
             if (_animacao.Animation != "fire")
             {
-                _animacao.SpeedScale = 1.0f;
+                _animacao.SpeedScale = 2.0f;
                 _animacao.Play("fire");
             }
         }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkrj8fhdshsrb"
-path="res://.godot/imported/inimigo_funqueiro.jpeg-3149ddffc954521a344bc20a48407a42.ctex"
+uid="uid://dc1xnqjfjrdy2"
+path="res://.godot/imported/funkEnemyFireAndDraw.png-ff103be0d114319ca6f89998421fa11a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inimigo_funqueiro.jpeg"
-dest_files=["res://.godot/imported/inimigo_funqueiro.jpeg-3149ddffc954521a344bc20a48407a42.ctex"]
+source_file="res://images/funkEnemyFireAndDraw.png"
+dest_files=["res://.godot/imported/funkEnemyFireAndDraw.png-ff103be0d114319ca6f89998421fa11a.ctex"]
 
 [params]
 

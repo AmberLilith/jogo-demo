@@ -1,48 +1,64 @@
 [gd_scene format=3 uid="uid://fvu6is4oge35"]
 
 [ext_resource type="Script" uid="uid://1sa4vtylmjf4" path="res://FunkEnemy.cs" id="1_ef5aw"]
-[ext_resource type="Texture2D" uid="uid://cw2i8e7pe3eb6" path="res://inimigo_funqueiro.png" id="1_nb203"]
 [ext_resource type="PackedScene" uid="uid://giq5ldlrflkd" path="res://bullet.tscn" id="2_pajqg"]
+[ext_resource type="Texture2D" uid="uid://dc1xnqjfjrdy2" path="res://images/funkEnemyFireAndDraw.png" id="3_qi4xy"]
+[ext_resource type="Texture2D" uid="uid://cdo3sbox0spc2" path="res://images/FunkEnemyIdle.png" id="4_jwdfa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef5aw"]
-atlas = ExtResource("1_nb203")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8pr5"]
+atlas = ExtResource("3_qi4xy")
 region = Rect2(0, 255, 260, 255)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pajqg"]
-atlas = ExtResource("1_nb203")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cid2f"]
+atlas = ExtResource("3_qi4xy")
 region = Rect2(260, 255, 260, 255)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vuacq"]
-atlas = ExtResource("1_nb203")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yjgg"]
+atlas = ExtResource("3_qi4xy")
 region = Rect2(520, 255, 260, 255)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rprh"]
-atlas = ExtResource("1_nb203")
-region = Rect2(520, 255, 260, 255)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_whpcf"]
-atlas = ExtResource("1_nb203")
+[sub_resource type="AtlasTexture" id="AtlasTexture_umdre"]
+atlas = ExtResource("3_qi4xy")
 region = Rect2(780, 255, 260, 255)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ct5oo"]
-atlas = ExtResource("1_nb203")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y3bb"]
+atlas = ExtResource("3_qi4xy")
 region = Rect2(0, 0, 260, 255)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_niiw8"]
-atlas = ExtResource("1_nb203")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qehk5"]
+atlas = ExtResource("3_qi4xy")
+region = Rect2(520, 0, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1eup"]
+atlas = ExtResource("3_qi4xy")
 region = Rect2(260, 0, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaoet"]
+atlas = ExtResource("3_qi4xy")
+region = Rect2(780, 0, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyw6s"]
+atlas = ExtResource("4_jwdfa")
+region = Rect2(0, 255, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whe8y"]
+atlas = ExtResource("4_jwdfa")
+region = Rect2(260, 255, 260, 255)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rprh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ef5aw")
+"texture": SubResource("AtlasTexture_i8pr5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pajqg")
+"texture": SubResource("AtlasTexture_cid2f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vuacq")
+"texture": SubResource("AtlasTexture_4yjgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umdre")
 }],
 "loop": false,
 "name": &"draw",
@@ -50,13 +66,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0rprh")
+"texture": SubResource("AtlasTexture_4y3bb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_whpcf")
+"texture": SubResource("AtlasTexture_qehk5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0rprh")
+"texture": SubResource("AtlasTexture_m1eup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaoet")
 }],
 "loop": false,
 "name": &"fire",
@@ -64,10 +83,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ct5oo")
+"texture": SubResource("AtlasTexture_tyw6s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_niiw8")
+"texture": SubResource("AtlasTexture_whe8y")
 }],
 "loop": true,
 "name": &"idle",
@@ -75,16 +94,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef5aw"]
-size = Vector2(143.25, 153)
+size = Vector2(143.25, 224)
 
 [node name="FunkEnemy" type="CharacterBody2D" unique_id=906548472 groups=["enemies"]]
 script = ExtResource("1_ef5aw")
 Bullet = ExtResource("2_pajqg")
 
 [node name="FunkEnemyAnimation" type="AnimatedSprite2D" parent="." unique_id=2026254009]
-scale = Vector2(0.58076924, 0.7039215)
+position = Vector2(-14.000004, 16.748531)
+scale = Vector2(0.703125, 0.7549135)
 sprite_frames = SubResource("SpriteFrames_0rprh")
-animation = &"fire"
+animation = &"draw"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=32232666]
 position = Vector2(-26, -23)
@@ -93,5 +113,4 @@ position = Vector2(-26, -23)
 wait_time = 2.0
 
 [node name="FunkEnemyCollision" type="CollisionShape2D" parent="." unique_id=783731218 groups=["enemies"]]
-position = Vector2(12.375, 11.5)
 shape = SubResource("RectangleShape2D_ef5aw")
