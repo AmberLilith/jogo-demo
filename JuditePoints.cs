@@ -18,10 +18,7 @@ public partial class JuditePoints : Area2D
 	// cria uma variável chamada 'Player' para acessarmos os métodos dele!
 	if (body is Player player) 
 	{
-		// Envia o valor (1) lá para a conta do Player
-		player.AddPoints(Value); 
-		
-		// Destrói a galinha
+		showEggs();
 		Collect(); 
 	}
 }
@@ -30,5 +27,10 @@ public partial class JuditePoints : Area2D
 	{		
 		// Remove o item do jogo
 		QueueFree();
+	}
+
+	private void showEggs(){
+		var eggs = GetParent().GetNode<HBoxContainer>("Eggs");
+		eggs.Visible = true;
 	}
 }

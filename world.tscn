@@ -4620,7 +4620,7 @@ position = Vector2(-25.025333, 37.49996)
 scale = Vector2(2.6994839, 2.2196975)
 sprite_frames = SubResource("SpriteFrames_qobow")
 animation = &"run"
-frame_progress = 0.057624076
+frame_progress = 0.32895926
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1780601059]
 position = Vector2(-3.333, -596.667)
@@ -4676,7 +4676,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Bêbezinhas coletadas: 0"
 
-[node name="Node2D5" parent="." unique_id=813975085 instance=ExtResource("11_il2jm")]
+[node name="Virginia2" parent="." unique_id=813975085 instance=ExtResource("11_il2jm")]
 position = Vector2(2305, 260)
 
 [node name="StartBarrer" type="StaticBody2D" parent="." unique_id=1384394909]
@@ -4742,5 +4742,8 @@ position = Vector2(4417, 482)
 
 [node name="FunkEnemy" parent="." unique_id=906548472 instance=ExtResource("12_wjb0r")]
 position = Vector2(3933, 470)
+
+[node name="Node2D2" parent="." unique_id=225730023 instance=ExtResource("10_wukud")]
+position = Vector2(3416, 497)
 
 [connection signal="pressed" from="GameOverScreen/ColorRect/RestartButton" to="GameOverScreen" method="_on_restart_button_pressed"]

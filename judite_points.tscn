@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8rfomd7rm11y" path="res://JuditePoints.cs" id="1_sh2v4"]
 [ext_resource type="Texture2D" uid="uid://dl7ya2vph7b2w" path="res://judite.png" id="2_b5ob8"]
+[ext_resource type="PackedScene" uid="uid://dx6li6hlv4uw0" path="res://egg.tscn" id="3_n4yp5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
 radius = 257.41565
@@ -20,3 +21,19 @@ texture = ExtResource("2_b5ob8")
 position = Vector2(2.0000153, 0)
 scale = Vector2(0.18287037, 0.1388889)
 shape = SubResource("CircleShape2D_4wss7")
+
+[node name="Eggs" type="HBoxContainer" parent="." unique_id=268469006]
+visible = false
+offset_left = 32.0
+offset_top = 3.0
+offset_right = 188.0
+offset_bottom = 43.0
+
+[node name="Egg" parent="Eggs" unique_id=1053432599 instance=ExtResource("3_n4yp5")]
+position = Vector2(25, 0)
+
+[node name="Egg2" parent="Eggs" unique_id=1103494359 instance=ExtResource("3_n4yp5")]
+position = Vector2(96, 0)
+
+[node name="Egg3" parent="Eggs" unique_id=1429655243 instance=ExtResource("3_n4yp5")]
+position = Vector2(164, 0)
