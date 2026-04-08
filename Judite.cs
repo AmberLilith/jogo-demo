@@ -1,6 +1,6 @@
 using Godot;
 using System;
-public partial class JuditePoints : Area2D
+public partial class Judite : Area2D
 {
 	// Você pode definir um valor para o item, se quiser 
 	[Export] public int Value = 3;
@@ -12,7 +12,7 @@ public partial class JuditePoints : Area2D
 		// Conecta o sinal de quando algo entra na área 
 		BodyEntered += OnBodyEntered;
 		_juditeSound = GetNode<AudioStreamPlayer2D>("JuditeAudioPlayer2D");
-		_eggs = GetParent().GetNode<Node2D>("Eggs");
+		_eggs = GetNode<Node2D>("Eggs");
 		_juditeSound.Finished += () => showEggs();
 		// Mostra os ovos depois de tocar o som 
 	}
@@ -33,34 +33,27 @@ public partial class JuditePoints : Area2D
 	private void showEggs()
 {
     var currentEggsPosY = _eggs.Position.Y;
-    _eggs.Position = new Vector2(5.0f, this.Position.Y);
+    _eggs.Position = new Vector2(5.0f, currentEggsPosY);
     _eggs.Visible = true;
 
     Tween tween = GetTree().CreateTween();
-    
-    // ✅ Separa o tween da conexão do sinal
-    tween.TweenProperty(_eggs, "position", new Vector2(30.0f, currentEggsPosY), 0.5f)
+	
+    tween.TweenProperty(_eggs, "position", new Vector2(40.0f, currentEggsPosY), 1.0f)
          .SetTrans(Tween.TransitionType.Quad)
          .SetEase(Tween.EaseType.Out);
 
-    // ✅ Conecta o Finished no TWEEN, não no PropertyTweener
     tween.Finished += () => {
         foreach (var egg in _eggs.GetChildren())
-        {	GD.Print("tipo = " + egg.GetType()); // Apenas para evitar warnings de variável não usada
-            if (egg is Node2D node2d)
-            {
-				foreach (var area in node2d.GetChildren())
-				{
-					if(area is Egg eggArea)
+        {	
+			foreach(var area in egg.GetChildren())
+			{
+				if(egg is Egg eggArea)
 					{
-						GD.Print("Desativando colisão do ovo: " + node2d.Name);
 					eggArea.EnableCollision();
 					}
-				}
-				{
 				
-				}	
-            }
+			}			
+            
         }
         Collect();
     };

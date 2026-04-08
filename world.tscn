@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dxl2pthjog7ut" path="res://crentelha_enemy.tscn" id="8_26xuy"]
 [ext_resource type="Texture2D" uid="uid://dijv2fu5x6526" path="res://obstacles.png" id="9_bc84e"]
 [ext_resource type="Texture2D" uid="uid://70510fpp435v" path="res://images/walkSquating.png" id="9_ikiii"]
-[ext_resource type="PackedScene" uid="uid://b3686ngo3itvd" path="res://judite_points.tscn" id="10_wukud"]
+[ext_resource type="PackedScene" uid="uid://b3686ngo3itvd" path="res://judite.tscn" id="10_wukud"]
 [ext_resource type="PackedScene" uid="uid://bwuaotorhsu0a" path="res://virginia.tscn" id="11_il2jm"]
 [ext_resource type="PackedScene" uid="uid://fvu6is4oge35" path="res://funk_enemy.tscn" id="12_wjb0r"]
 [ext_resource type="Script" uid="uid://domkl8w4h4lax" path="res://DeathZone.cs" id="13_mc2jv"]
@@ -4743,13 +4743,13 @@ position = Vector2(4417, 482)
 [node name="FunkEnemy" parent="." unique_id=906548472 instance=ExtResource("12_wjb0r")]
 position = Vector2(3933, 470)
 
-[node name="Node2D3" parent="." unique_id=632617951 instance=ExtResource("10_wukud")]
-position = Vector2(4993, 518)
+[node name="Judite4" parent="." unique_id=1502595574 instance=ExtResource("10_wukud")]
+position = Vector2(5241, 493)
 
-[node name="Node2D2" parent="." unique_id=751406790 instance=ExtResource("10_wukud")]
-position = Vector2(5336, 507)
+[node name="Judite5" parent="." unique_id=27301428 instance=ExtResource("10_wukud")]
+position = Vector2(5614, 507)
 
-[node name="Node2D4" parent="." unique_id=1894541364 instance=ExtResource("10_wukud")]
-position = Vector2(5701, 507)
+[node name="Judite6" parent="." unique_id=1466062440 instance=ExtResource("10_wukud")]
+position = Vector2(6041, 472)
 
 [connection signal="pressed" from="GameOverScreen/ColorRect/RestartButton" to="GameOverScreen" method="_on_restart_button_pressed"]

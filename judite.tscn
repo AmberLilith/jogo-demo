@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3686ngo3itvd"]
 
-[ext_resource type="Script" uid="uid://c8rfomd7rm11y" path="res://JuditePoints.cs" id="1_sh2v4"]
+[ext_resource type="Script" uid="uid://c8rfomd7rm11y" path="res://Judite.cs" id="1_sh2v4"]
 [ext_resource type="Texture2D" uid="uid://dl7ya2vph7b2w" path="res://judite.png" id="2_b5ob8"]
 [ext_resource type="AudioStream" uid="uid://bs170spt6frvh" path="res://audios/juditeSound.mp3" id="3_akng0"]
 [ext_resource type="PackedScene" uid="uid://dx6li6hlv4uw0" path="res://egg.tscn" id="3_n4yp5"]
@@ -8,20 +8,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
 radius = 257.41565
 
-[node name="Node2D" type="Node2D" unique_id=618305527]
-
-[node name="JuditePoints" type="Area2D" parent="." unique_id=1502595574]
+[node name="Judite" type="Area2D" unique_id=1502595574]
 script = ExtResource("1_sh2v4")
 
-[node name="JuditeAudioPlayer2D" type="AudioStreamPlayer2D" parent="JuditePoints" unique_id=474346163]
+[node name="JuditeAudioPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=474346163]
 stream = ExtResource("3_akng0")
 
-[node name="Sprite2D" type="Sprite2D" parent="JuditePoints" unique_id=1998840307]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998840307]
 position = Vector2(2.0000153, 0)
 scale = Vector2(0.18287037, 0.1388889)
 texture = ExtResource("2_b5ob8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="JuditePoints" unique_id=912152848]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=912152848]
 position = Vector2(2.0000153, 0)
 scale = Vector2(0.18287037, 0.1388889)
 shape = SubResource("CircleShape2D_4wss7")
