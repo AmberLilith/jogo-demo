@@ -4604,7 +4604,7 @@ texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
 z_index = 1
-position = Vector2(3200, 500)
+position = Vector2(4800, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 
@@ -4744,6 +4744,6 @@ position = Vector2(4417, 482)
 position = Vector2(3933, 470)
 
 [node name="Node2D2" parent="." unique_id=225730023 instance=ExtResource("10_wukud")]
-position = Vector2(3416, 497)
+position = Vector2(5071, 492)
 
 [connection signal="pressed" from="GameOverScreen/ColorRect/RestartButton" to="GameOverScreen" method="_on_restart_button_pressed"]

@@ -3,14 +3,33 @@
 [ext_resource type="Script" uid="uid://c8rfomd7rm11y" path="res://JuditePoints.cs" id="1_sh2v4"]
 [ext_resource type="Texture2D" uid="uid://dl7ya2vph7b2w" path="res://judite.png" id="2_b5ob8"]
 [ext_resource type="PackedScene" uid="uid://dx6li6hlv4uw0" path="res://egg.tscn" id="3_n4yp5"]
+[ext_resource type="AudioStream" uid="uid://ho8pporeukoo" path="res://audios/ticken.mp3" id="4_akng0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
 radius = 257.41565
 
 [node name="Node2D" type="Node2D" unique_id=618305527]
 
+[node name="Eggs" type="HBoxContainer" parent="." unique_id=268469006]
+visible = false
+offset_left = 4.0
+offset_right = 160.0
+offset_bottom = 40.0
+
+[node name="Egg" parent="Eggs" unique_id=1053432599 instance=ExtResource("3_n4yp5")]
+position = Vector2(25, 0)
+
+[node name="Egg2" parent="Eggs" unique_id=1103494359 instance=ExtResource("3_n4yp5")]
+position = Vector2(96, 0)
+
+[node name="Egg3" parent="Eggs" unique_id=1429655243 instance=ExtResource("3_n4yp5")]
+position = Vector2(164, 0)
+
 [node name="JuditePoints" type="Area2D" parent="." unique_id=1502595574]
 script = ExtResource("1_sh2v4")
+
+[node name="JuditeAudioPlayer2D" type="AudioStreamPlayer2D" parent="JuditePoints" unique_id=474346163]
+stream = ExtResource("4_akng0")
 
 [node name="Sprite2D" type="Sprite2D" parent="JuditePoints" unique_id=1998840307]
 position = Vector2(2.0000153, 0)
@@ -21,19 +40,3 @@ texture = ExtResource("2_b5ob8")
 position = Vector2(2.0000153, 0)
 scale = Vector2(0.18287037, 0.1388889)
 shape = SubResource("CircleShape2D_4wss7")
-
-[node name="Eggs" type="HBoxContainer" parent="." unique_id=268469006]
-visible = false
-offset_left = 32.0
-offset_top = 3.0
-offset_right = 188.0
-offset_bottom = 43.0
-
-[node name="Egg" parent="Eggs" unique_id=1053432599 instance=ExtResource("3_n4yp5")]
-position = Vector2(25, 0)
-
-[node name="Egg2" parent="Eggs" unique_id=1103494359 instance=ExtResource("3_n4yp5")]
-position = Vector2(96, 0)
-
-[node name="Egg3" parent="Eggs" unique_id=1429655243 instance=ExtResource("3_n4yp5")]
-position = Vector2(164, 0)
