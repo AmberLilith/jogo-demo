@@ -5,6 +5,7 @@ public partial class Egg : Area2D
 {
     	public override void _Ready()
 	{
+		 GetNode<CollisionShape2D>("EggCollision").SetDeferred("disabled", true);
 		// Conecta o sinal de quando algo entra na área
 		BodyEntered += OnBodyEntered;
 	}
@@ -13,7 +14,6 @@ private async void OnBodyEntered(Node2D body)
 {
 	if (body is Player player)
 	{
-		GetNode<CollisionShape2D>("EggCollision").SetDeferred("disabled", true);
 
 		// 1. Pegamos a Label
 		Label scoreLabel = GetTree().Root.GetNode<Label>("World/HUD/HBoxContainer/Score");
@@ -38,6 +38,11 @@ private async void OnBodyEntered(Node2D body)
 
 		QueueFree();
 	}
+}
+
+public void EnableCollision()
+{
+    GetNode<CollisionShape2D>("EggCollision").Disabled = false;
 }
 
 }

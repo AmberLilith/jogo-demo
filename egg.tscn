@@ -16,5 +16,6 @@ scale = Vector2(0.28571427, 0.22309417)
 texture = ExtResource("2_s80rl")
 
 [node name="EggCollision" type="CollisionShape2D" parent="Egg" unique_id=472107530]
+position = Vector2(5.000001, 0)
 scale = Vector2(0.48809522, 0.45515695)
 shape = SubResource("CircleShape2D_7piv4")

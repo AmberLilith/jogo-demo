@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bwuaotorhsu0a"]
+
+[ext_resource type="Script" uid="uid://ctk31ywtaf6ub" path="res://Virginia.cs" id="1_cgxy3"]
+[ext_resource type="Texture2D" uid="uid://do7wnw1deri5a" path="res://virginia.png" id="2_i2sjh"]
+[ext_resource type="AudioStream" uid="uid://bef02olo2odl5" path="res://audios/virginiaSound.mp3" id="3_4wypx"]
+[ext_resource type="PackedScene" uid="uid://dx6li6hlv4uw0" path="res://egg.tscn" id="3_l6gld"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
+radius = 257.41565
+
+[node name="Virginia" type="Node2D" unique_id=618305527]
+
+[node name="Eggs" type="VBoxContainer" parent="." unique_id=309892635]
+visible = false
+offset_top = -14.0
+offset_right = 193.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Eggs" unique_id=488705909]
+layout_mode = 2
+
+[node name="Egg" parent="Eggs/HBoxContainer" unique_id=1053432599 instance=ExtResource("3_l6gld")]
+position = Vector2(93, 22)
+
+[node name="Egg3" parent="Eggs/HBoxContainer" unique_id=350853124 instance=ExtResource("3_l6gld")]
+position = Vector2(26, 23)
+
+[node name="Egg2" parent="Eggs/HBoxContainer" unique_id=22318236 instance=ExtResource("3_l6gld")]
+position = Vector2(161, 24)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Eggs" unique_id=1452030305]
+layout_mode = 2
+
+[node name="Egg4" parent="Eggs/HBoxContainer2" unique_id=923158960 instance=ExtResource("3_l6gld")]
+position = Vector2(124, -36)
+
+[node name="Egg5" parent="Eggs/HBoxContainer2" unique_id=1978139022 instance=ExtResource("3_l6gld")]
+position = Vector2(62, -32)
+
+[node name="Virginia" type="Area2D" parent="." unique_id=1502595574]
+script = ExtResource("1_cgxy3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Virginia" unique_id=1998840307]
+position = Vector2(2.0000153, 0)
+scale = Vector2(0.18287037, 0.1388889)
+texture = ExtResource("2_i2sjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Virginia" unique_id=912152848]
+position = Vector2(2.0000153, 0)
+scale = Vector2(0.18287037, 0.1388889)
+shape = SubResource("CircleShape2D_4wss7")
+
+[node name="VirginiaAudioPlayer2D" type="AudioStreamPlayer2D" parent="Virginia" unique_id=1554240404]
+stream = ExtResource("3_4wypx")
