@@ -1,25 +1,111 @@
 [gd_scene format=3 uid="uid://b3686ngo3itvd"]
 
 [ext_resource type="Script" uid="uid://c8rfomd7rm11y" path="res://Judite.cs" id="1_sh2v4"]
-[ext_resource type="Texture2D" uid="uid://dl7ya2vph7b2w" path="res://judite.png" id="2_b5ob8"]
 [ext_resource type="AudioStream" uid="uid://bs170spt6frvh" path="res://audios/juditeSound.mp3" id="3_akng0"]
+[ext_resource type="Texture2D" uid="uid://bkvgrruahpvt6" path="res://images/Judite/ChatGPT Image 8 de abr. de 2026, 21_13_26.png" id="3_kxsch"]
 [ext_resource type="PackedScene" uid="uid://dx6li6hlv4uw0" path="res://egg.tscn" id="3_n4yp5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3you"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(0, 981, 384, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxsch"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(0, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdarw"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(384, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6qvb"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(768, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pbp4"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(1152, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3snck"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(0, 327, 384, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb8r2"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(384, 327, 384, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31d10"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(768, 327, 384, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p1xv"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(1152, 327, 384, 327)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxsch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3you")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxsch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdarw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6qvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pbp4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3snck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb8r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31d10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p1xv")
+}],
+"loop": true,
+"name": &"scratch",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
 radius = 257.41565
 
-[node name="Judite" type="Area2D" unique_id=1502595574]
+[node name="Judite" type="Area2D" unique_id=1502595574 node_paths=PackedStringArray("collisonNode", "AnimationNode", "SoundNode", "EggsNode")]
 script = ExtResource("1_sh2v4")
+collisonNode = NodePath("JuditeCollision")
+AnimationNode = NodePath("JuditeAnimation")
+SoundNode = NodePath("JuditeAudioPlayer")
+EggsNode = NodePath("Eggs")
 
-[node name="JuditeAudioPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=474346163]
+[node name="JuditeAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=474346163]
 stream = ExtResource("3_akng0")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1998840307]
-position = Vector2(2.0000153, 0)
-scale = Vector2(0.18287037, 0.1388889)
-texture = ExtResource("2_b5ob8")
+[node name="JuditeAnimation" type="AnimatedSprite2D" parent="." unique_id=814320822]
+position = Vector2(11.000002, 25)
+scale = Vector2(0.26786184, 0.23152362)
+sprite_frames = SubResource("SpriteFrames_kxsch")
+animation = &"scratch"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=912152848]
+[node name="JuditeCollision" type="CollisionShape2D" parent="." unique_id=912152848]
 position = Vector2(2.0000153, 0)
 scale = Vector2(0.18287037, 0.1388889)
 shape = SubResource("CircleShape2D_4wss7")

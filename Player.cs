@@ -97,7 +97,7 @@ public override void _PhysicsProcess(double delta)
         // Andando agachado
         _animation.SpeedScale = 1.0f;
 		_animation.Play("walkSquatting");
-		_animation.Offset = new Vector2(0, 475); // Ajusta o offset para alinhar a animação agachada, pois não consegui ajustar
+		_animation.Offset = new Vector2(0, 475); // Ajusta o offset para alinhar a animação agachada, pois não consegui ajustar no editor
 		_colisaoEmPe.SetDeferred("disabled", true);
 		_colisaoAgachado.SetDeferred("disabled", false);
     }
