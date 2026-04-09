@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 
 public abstract partial class Chiken : Area2D
 {
@@ -7,7 +8,7 @@ public abstract partial class Chiken : Area2D
     [Export] public int eggsAmount = 3;
     private bool _isEggsShown = false;
     private Node2D _eggs;
-    public const float RunSpeed = 300.0f;
+    public const float RunSpeed = 200.0f;
     [Export] public CollisionShape2D collisonNode; //Arraste o nó correspondente da galinha aqui no inspetor
 
     [Export] public AnimatedSprite2D AnimationNode; //Arraste o nó correspondente da galinha aqui no inspetor
@@ -75,49 +76,41 @@ public override void _PhysicsProcess(double delta)
     Vector2 direction = new Vector2(Input.GetAxis("ui_left", "ui_right"), 0);
 }
     private async void Collect()
-{
-    // 1. Desativa a colisão imediatamente para o player não interagir mais
-    collisonNode.SetDeferred("disabled", true);
-    
-    // 2. Torna o visual invisível (opcional, caso queira que ela suma da tela mas espere o tempo)
-    // AnimationNode.Visible = false;
+    {
+        // 1. Desativa a colisão imediatamente para o player não interagir mais
+        collisonNode.SetDeferred("disabled", true);
+        
+        // 2. Torna o visual invisível (opcional, caso queira que ela suma da tela mas espere o tempo)
+        // AnimationNode.Visible = false;
 
-    // 3. Cria um timer de 10 segundos e aguarda o sinal de término (timeout)
-    // O await permite que o código "pare" aqui sem travar o resto do jogo
-    await ToSignal(GetTree().CreateTimer(10.0f), SceneTreeTimer.SignalName.Timeout);
+        // 3. Cria um timer de 10 segundos e aguarda o sinal de término (timeout)
+        // O await permite que o código "pare" aqui sem travar o resto do jogo
+        await ToSignal(GetTree().CreateTimer(60.0f), SceneTreeTimer.SignalName.Timeout);
 
-    // 4. Após 1 minuto, remove a galinha do jogo
-    QueueFree();
-}
+        // 4. Após 10 segundos, remove a galinha do jogo
+        AnimationNode.QueueFree();
+    }
+
     private void showEggs()
     {
         var currentEggsPosY = _eggs.Position.Y;
         _eggs.Position = new Vector2(5.0f, currentEggsPosY);
         _eggs.Visible = true;
 
-        Tween tween = GetTree().CreateTween();
-
-        tween.TweenProperty(_eggs, "position", new Vector2(40.0f, currentEggsPosY), 1.0f)
-             .SetTrans(Tween.TransitionType.Quad)
-             .SetEase(Tween.EaseType.Out);
-
-        tween.Finished += () =>
+        foreach (var egg in _eggs.GetChildren())
         {
-            foreach (var egg in _eggs.GetChildren())
+            foreach (var area in egg.GetChildren())
             {
-                foreach (var area in egg.GetChildren())
+                if (egg is Egg eggArea)
                 {
-                    if (egg is Egg eggArea)
-                    {
-                        eggArea.EnableCollision();
-                    }
-
+                    eggArea.EnableCollision();
                 }
 
             }
-            Collect();
-        };
+
+        }
+        Collect();
 
         _isEggsShown = true;
-    } 
+    }
 }

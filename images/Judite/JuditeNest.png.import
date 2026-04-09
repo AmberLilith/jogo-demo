@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bblw4aqp3opxn"
-path="res://.godot/imported/VirginiaInNest.png-55d1e5578b45f44f77978b4ee6d0ad03.ctex"
+uid="uid://bu8l0s3yxlfpp"
+path="res://.godot/imported/JuditeNest.png-01fa15ddd85b080c5b611ab6fab6cb9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Virginia/VirginiaInNest.png"
-dest_files=["res://.godot/imported/VirginiaInNest.png-55d1e5578b45f44f77978b4ee6d0ad03.ctex"]
+source_file="res://images/Judite/JuditeNest.png"
+dest_files=["res://.godot/imported/JuditeNest.png-01fa15ddd85b080c5b611ab6fab6cb9d.ctex"]
 
 [params]
 
