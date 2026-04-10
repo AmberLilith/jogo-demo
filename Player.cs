@@ -5,7 +5,7 @@ public partial class Player : CharacterBody2D
 {
 	public const float Speed = 200.0f;
 	public const float RunSpeed = 400.0f;
-	public const float JumpVelocity = -900.0f;
+	public const float JumpVelocity = -450.0f;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private CanvasLayer _gameOverScreen;
 
