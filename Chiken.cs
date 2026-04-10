@@ -44,18 +44,18 @@ public abstract partial class Chiken : Area2D
             // CALCULA A DIREÇÃO:
             // Se a posição X do player for menor que a da galinha, o player vem da ESQUERDA.
             // Então a galinha deve fugir para a DIREITA (valor positivo).
-            float fugirParaDirecao = (player.GlobalPosition.X < GlobalPosition.X) ? 1.0f : -1.0f;
+            float runAwayTowards = (player.GlobalPosition.X < GlobalPosition.X) ? 1.0f : -1.0f;
 
             // Gira o sprite: Se for para a esquerda (-1), FlipH = true.
             // Se o seu sprite original já olha para a esquerda, inverta o sinal abaixo:
-            AnimationNode.FlipH = fugirParaDirecao > 0;
+            AnimationNode.FlipH = runAwayTowards > 0;
 
             AnimationNode.Play("run");
 
             Tween tween = GetTree().CreateTween();
             
             // Move baseado na direção calculada (fugirParaDirecao será 1 ou -1)
-            float distanciaFuga = 400.0f * fugirParaDirecao;
+            float distanciaFuga = 400.0f * runAwayTowards;
 
             tween.TweenProperty(AnimationNode, "position:x", AnimationNode.Position.X + distanciaFuga, 1.0f)
                  .SetTrans(Tween.TransitionType.Quad)

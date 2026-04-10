@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://6k7wia5geqei" path="res://GameOverScreen.cs" id="14_70uel"]
 [ext_resource type="PackedScene" uid="uid://bdcfuipu6vk37" path="res://ExtraLife.tscn" id="15_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://qs6gk42tkr7p" path="res://checkpoint.tscn" id="16_2u3nc"]
+[ext_resource type="PackedScene" uid="uid://cgjeaygmyoc40" path="res://mouse.tscn" id="19_cbp6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(288.3333, 550)
@@ -4698,7 +4699,7 @@ position = Vector2(0, 130)
 shape = SubResource("RectangleShape2D_udxuc")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="Player" unique_id=1949477913]
-position = Vector2(-25.025333, 37.49996)
+position = Vector2(-83.33263, 39.99996)
 scale = Vector2(2.6994839, 2.2196975)
 sprite_frames = SubResource("SpriteFrames_qobow")
 animation = &"run"
@@ -4818,5 +4819,8 @@ position = Vector2(4417, 482)
 
 [node name="FunkEnemy" parent="." unique_id=906548472 instance=ExtResource("12_wjb0r")]
 position = Vector2(3933, 470)
+
+[node name="Mouse" parent="." unique_id=365002231 instance=ExtResource("19_cbp6q")]
+position = Vector2(6999, 549)
 
 [connection signal="pressed" from="GameOverScreen/ColorRect/RestartButton" to="GameOverScreen" method="_on_restart_button_pressed"]
