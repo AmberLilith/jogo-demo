@@ -6,6 +6,9 @@ public partial class Player : CharacterBody2D
 	public const float Speed = 200.0f;
 	public const float RunSpeed = 400.0f;
 	public const float JumpVelocity = -450.0f;
+
+    private bool _dubleJump = false;
+    
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private CanvasLayer _gameOverScreen;
 
@@ -67,8 +70,22 @@ public override void _PhysicsProcess(double delta)
 
     if (!IsOnFloor())
         velocity.Y += Gravity * (float)delta;
-    if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+    if (Input.IsActionJustPressed("ui_accept"))
+{
+    if (IsOnFloor())
+    {
+        // ✅ Primeiro pulo — normal
         velocity.Y = JumpVelocity;
+        _dubleJump = true; // libera o segundo pulo
+    }
+    else if (_dubleJump)
+    {
+        // ✅ Segundo pulo — dobro da força
+        velocity.Y = JumpVelocity * 2;
+        _dubleJump = false; // consome o segundo pulo
+    }
+}
+
 
     if (direction != Vector2.Zero)
     {
