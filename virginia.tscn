@@ -116,6 +116,7 @@ shape = SubResource("CircleShape2D_4wss7")
 stream = ExtResource("3_4wypx")
 
 [node name="Eggs" type="Node2D" parent="." unique_id=484169039]
+visible = false
 
 [node name="Egg" parent="Eggs" unique_id=1053432599 instance=ExtResource("3_l6gld")]
 position = Vector2(1, 7)

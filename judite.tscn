@@ -117,6 +117,7 @@ scale = Vector2(0.18287037, 0.1388889)
 shape = SubResource("CircleShape2D_4wss7")
 
 [node name="Eggs" type="Node2D" parent="." unique_id=569697233]
+visible = false
 position = Vector2(62, 1)
 
 [node name="Egg" parent="Eggs" unique_id=1053432599 instance=ExtResource("3_n4yp5")]

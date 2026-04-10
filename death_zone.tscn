@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dd2a88f5og6v"]
+
+[ext_resource type="Script" uid="uid://domkl8w4h4lax" path="res://DeathZone.cs" id="1_2aghb"]
+[ext_resource type="Texture2D" uid="uid://cs4web6v8ldrs" path="res://images/agua.png" id="2_f7myi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yqtc"]
+size = Vector2(240, 18)
+
+[node name="DeathZone" type="Area2D" unique_id=35478423]
+position = Vector2(2250, 623)
+script = ExtResource("1_2aghb")
+
+[node name="DeathZoneCollision" type="CollisionShape2D" parent="." unique_id=849839192]
+position = Vector2(13, -1)
+shape = SubResource("RectangleShape2D_7yqtc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2105352321]
+position = Vector2(12.000019, 3.8146973e-06)
+scale = Vector2(0.8525472, 0.5044247)
+texture = ExtResource("2_f7myi")
