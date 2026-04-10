@@ -66,29 +66,17 @@ region = Rect2(500, 0, 100, 220)
 atlas = ExtResource("4_2u3nc")
 region = Rect2(600, 0, 100, 220)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf3ij"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2s0j"]
 atlas = ExtResource("5_udxuc")
-region = Rect2(0, 0, 235, 220)
+region = Rect2(470, 0, 235, 220)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3apa"]
 atlas = ExtResource("5_udxuc")
 region = Rect2(235, 0, 235, 220)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2s0j"]
-atlas = ExtResource("5_udxuc")
-region = Rect2(470, 0, 235, 220)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfvg0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf3ij"]
 atlas = ExtResource("5_udxuc")
 region = Rect2(0, 0, 235, 220)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6occ4"]
-atlas = ExtResource("5_udxuc")
-region = Rect2(235, 0, 235, 220)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjyh4"]
-atlas = ExtResource("5_udxuc")
-region = Rect2(470, 0, 235, 220)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3ebs"]
 atlas = ExtResource("6_ikiii")
@@ -214,22 +202,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nf3ij")
+"texture": SubResource("AtlasTexture_a2s0j")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f3apa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a2s0j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vfvg0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6occ4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjyh4")
+"texture": SubResource("AtlasTexture_nf3ij")
 }],
 "loop": true,
 "name": &"jump",
@@ -4687,7 +4666,7 @@ texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
 z_index = 1
-position = Vector2(5400, 500)
+position = Vector2(6500, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 
@@ -4702,8 +4681,7 @@ shape = SubResource("RectangleShape2D_udxuc")
 position = Vector2(-83.33263, 39.99996)
 scale = Vector2(2.6994839, 2.2196975)
 sprite_frames = SubResource("SpriteFrames_qobow")
-animation = &"run"
-frame_progress = 0.32895926
+animation = &"jump"
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1780601059]
 position = Vector2(-3.333, -596.667)

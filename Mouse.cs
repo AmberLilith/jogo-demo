@@ -55,12 +55,12 @@ public partial class Mouse : CharacterBody2D
     {
         Vector2 velocity = Velocity;
 
-        Position += Direction * Speed * (float)delta;
+       Position += Direction * Speed * (float)delta;
 
-        // 1. Define a velocidade horizontal (sempre para a esquerda)
+        // Define a velocidade horizontal (sempre para a esquerda)
         velocity.X = Speed;
 
-        // 2. Aplica a velocidade ao corpo
+        // Aplica a velocidade ao corpo
         Velocity = velocity;
         MoveAndSlide();
         
