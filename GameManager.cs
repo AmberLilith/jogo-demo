@@ -2,9 +2,10 @@ using Godot;
 using System;
 
 public partial class GameManager : Node
+
 {
     public static GameManager Instance { get; private set; }
-    public int MaxLives = 3;
+    public int MaxLives = 2;
     public int CurrentLives;
     public int Score = 0;
     public Vector2 LastCheckpointPos;

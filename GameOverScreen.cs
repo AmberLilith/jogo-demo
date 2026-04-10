@@ -3,10 +3,12 @@ using System;
 
 public partial class GameOverScreen : CanvasLayer
 {
+	
+    public Button RestartButton;
 	public override void _Ready()
 	{
-		// O sinal 'pressed' do botão já foi conectado via Editor, 
-		// então não precisamos conectar aqui no _Ready.
+		RestartButton = GetNode<Button>("VBoxContainer/RestartButton");
+    	RestartButton.Pressed += OnRestartButtonPressed;
 	}
 
 	// A função que é chamada quando o botão é clicado

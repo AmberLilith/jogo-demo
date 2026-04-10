@@ -4682,6 +4682,7 @@ position = Vector2(-83.33263, 39.99996)
 scale = Vector2(2.6994839, 2.2196975)
 sprite_frames = SubResource("SpriteFrames_qobow")
 animation = &"jump"
+frame_progress = 0.5946483
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1780601059]
 position = Vector2(-3.333, -596.667)
@@ -4773,20 +4774,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.29411766)
 
-[node name="MessageLabel" type="Label" parent="GameOverScreen/ColorRect" unique_id=894434757]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen" unique_id=1916374073]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -20.0
+offset_right = 77.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MessageLabel" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=894434757]
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="GameOverScreen/ColorRect" unique_id=1132344618]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="RestartButton" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=1132344618]
+process_mode = 3
+layout_mode = 2
 text = "Tentar Novamente"
 
 [node name="Node2D" parent="." unique_id=1713484407 instance=ExtResource("15_hiqwa")]
@@ -4800,5 +4813,3 @@ position = Vector2(3933, 470)
 
 [node name="Mouse" parent="." unique_id=365002231 instance=ExtResource("19_cbp6q")]
 position = Vector2(6999, 549)
-
-[connection signal="pressed" from="GameOverScreen/ColorRect/RestartButton" to="GameOverScreen" method="_on_restart_button_pressed"]
