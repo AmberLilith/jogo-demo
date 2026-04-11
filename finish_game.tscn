@@ -56,7 +56,7 @@ mouse_filter = 2
 [node name="MessageLabel" type="Label" parent="ColorRect/VBoxContainer" unique_id=119408803]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Parabéns, você conseguiu!"
+text = "Parabéns, você conseguiu, Bebezolation!"
 horizontal_alignment = 1
 
 [node name="StartNewGameButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=404457834]

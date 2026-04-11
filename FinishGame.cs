@@ -6,12 +6,15 @@ public partial class FinishGame : CanvasLayer
     private CpuParticles2D _confetti;
 
     private Button _startNewGameButton;   
+    
+    private AudioStreamPlayer _audioPlayer;
 
     public override void _Ready()
     {
         // Referência ao nó que você vai criar no editor
         _confetti = GetNode<CpuParticles2D>("ColorRect/Confetti");
         _startNewGameButton = GetNode<Button>("ColorRect/VBoxContainer/StartNewGameButton");
+        _audioPlayer = GetNode<AudioStreamPlayer>("FinishGameAudioPlayer");
         _confetti.Emitting = false; // Começa desligado
         
         // Faz com que esta tela funcione mesmo quando o jogo estiver pausado
@@ -22,6 +25,7 @@ public partial class FinishGame : CanvasLayer
 
     public void ShowFinishScreen()
     {
+        _audioPlayer.Play();
         GetTree().Paused = true; // Pausa o gameplay
         Visible = true;
         _confetti.Restart(); // Reinicia as partículas para garantir que comecem do zero

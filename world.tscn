@@ -4653,7 +4653,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pfhxm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oi55"]
-size = Vector2(55, 545)
+size = Vector2(148, 545)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc2jv"]
+size = Vector2(71, 199)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gggvi"]
 atlas = ExtResource("15_mc2jv")
@@ -4687,6 +4690,10 @@ region = Rect2(1152, 0, 192, 512)
 atlas = ExtResource("15_mc2jv")
 region = Rect2(1344, 0, 192, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytpkv"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(0, 0, 192, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ytpkv"]
 animations = [{
 "frames": [{
@@ -4718,7 +4725,10 @@ animations = [{
 "name": &"activated",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytpkv")
+}],
 "loop": true,
 "name": &"deactivated",
 "speed": 5.0
@@ -4741,7 +4751,7 @@ texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
 z_index = 1
-position = Vector2(3504.0002, 500)
+position = Vector2(8200, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 
@@ -4823,20 +4833,25 @@ position = Vector2(-114, 402)
 position = Vector2(-1, -106.5)
 shape = SubResource("RectangleShape2D_0oi55")
 
-[node name="FinalBarrier" type="Area2D" parent="." unique_id=1866393195]
+[node name="FinalBarrier" type="StaticBody2D" parent="." unique_id=1076821934]
 position = Vector2(9000, 402)
 script = ExtResource("14_wukud")
+
+[node name="TriggerArea" type="Area2D" parent="FinalBarrier" unique_id=1987812122]
+position = Vector2(-80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalBarrier/TriggerArea" unique_id=406832796]
+position = Vector2(25.5, 89.5)
+shape = SubResource("RectangleShape2D_mc2jv")
 
 [node name="FinalFlag" type="AnimatedSprite2D" parent="FinalBarrier" unique_id=1634876413]
 position = Vector2(51, -29)
 sprite_frames = SubResource("SpriteFrames_ytpkv")
-animation = &"deactivated"
+animation = &"activated"
 
 [node name="FinalBarrerCollision" type="CollisionShape2D" parent="FinalBarrier" unique_id=1528832074]
+position = Vector2(26, 0)
 shape = SubResource("RectangleShape2D_0oi55")
-
-[node name="AudioPlayerFinalBarrier" type="AudioStreamPlayer" parent="FinalBarrier" unique_id=1519163495]
-stream = ExtResource("16_bo7i5")
 
 [node name="topBarrier" type="StaticBody2D" parent="." unique_id=1283752428]
 position = Vector2(62, 30)
@@ -4911,6 +4926,9 @@ position = Vector2(8045, 546)
 position = Vector2(8539, 551)
 
 [node name="FinishGame" parent="." unique_id=262015965 instance=ExtResource("23_il2jm")]
+
+[node name="FinishGameAudioPlayer" type="AudioStreamPlayer" parent="FinishGame" unique_id=902929846]
+stream = ExtResource("16_bo7i5")
 
 [node name="Amber" parent="." unique_id=272224271 instance=ExtResource("21_bc84e")]
 position = Vector2(8878, 419)

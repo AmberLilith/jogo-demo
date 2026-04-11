@@ -1,18 +1,20 @@
 using Godot;
 using System;
 
-public partial class FinalBarrier : Area2D
+public partial class FinalBarrier : StaticBody2D
 {
     private AnimatedSprite2D _finalFlag;
-    private AudioStreamPlayer _audioPlayer;
+    private Area2D _triggerArea;
+
     public override void _Ready()
     {
-        // Conecta o evento de colisão
-        BodyEntered += OnBodyEntered;
         _finalFlag = GetNode<AnimatedSprite2D>("FinalFlag");
-        _audioPlayer = GetNode<AudioStreamPlayer>("AudioPlayerFinalBarrier");
-        _finalFlag.Play("deactivated");
+        
+        // Procuramos a Area2D que você deve adicionar como filha no Editor
+        _triggerArea = GetNode<Area2D>("TriggerArea");
+        _triggerArea.BodyEntered += OnBodyEntered;
 
+        _finalFlag.Play("deactivated");
     }
 
     private void OnBodyEntered(Node2D body)
@@ -24,7 +26,7 @@ public partial class FinalBarrier : Area2D
             _finalFlag.Play("activated");
             _finalFlag.AnimationFinished += () => 
             {
-                _audioPlayer.Play();
+                GD.Print("Player aqui");
                 finishScreen.ShowFinishScreen();
             };
             
