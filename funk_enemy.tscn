@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://giq5ldlrflkd" path="res://bullet.tscn" id="2_pajqg"]
 [ext_resource type="Texture2D" uid="uid://dc1xnqjfjrdy2" path="res://images/funkEnemyFireAndDraw.png" id="3_qi4xy"]
 [ext_resource type="Texture2D" uid="uid://cdo3sbox0spc2" path="res://images/FunkEnemyIdle.png" id="4_jwdfa"]
+[ext_resource type="AudioStream" uid="uid://gqf2n4nxfe2u" path="res://audios/fire.mp3" id="5_jwdfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8pr5"]
 atlas = ExtResource("3_qi4xy")
@@ -114,3 +115,6 @@ wait_time = 2.0
 
 [node name="FunkEnemyCollision" type="CollisionShape2D" parent="." unique_id=783731218 groups=["enemies"]]
 shape = SubResource("RectangleShape2D_ef5aw")
+
+[node name="FunkEnemyAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=876770800]
+stream = ExtResource("5_jwdfa")

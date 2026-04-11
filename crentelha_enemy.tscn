@@ -56,7 +56,6 @@ position = Vector2(54.5, 190.875)
 shape = SubResource("RectangleShape2D_otwa2")
 
 [node name="CrentelhaEnemyAnimation" type="AnimatedSprite2D" parent="." unique_id=1675836665]
-visible = false
 position = Vector2(1.0000001, 46)
 scale = Vector2(0.46114284, 0.30402854)
 sprite_frames = SubResource("SpriteFrames_8wx08")

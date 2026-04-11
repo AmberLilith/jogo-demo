@@ -53,29 +53,34 @@ public partial class Mouse : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_Player == null) return;
+
         Vector2 velocity = Velocity;
+        float distance = GlobalPosition.DistanceTo(_Player.GlobalPosition);
 
-       Position += Direction * Speed * (float)delta;
-
-        // Define a velocidade horizontal (sempre para a esquerda)
-        velocity.X = Speed;
-
-        // Aplica a velocidade ao corpo
-        Velocity = velocity;
-        MoveAndSlide();
-        
-       
+        if (distance < AtackDistance)
         {
-            float distance = GlobalPosition.DistanceTo(_Player.GlobalPosition);
-            if (distance < AtackDistance)
+            // Inicia o movimento horizontal apenas se estiver dentro da distância
+            velocity.X = Speed;
+
+            if (_animation.Animation != "run")
             {
-                if(_animation.Animation != "run")
-                {
-                    _animation.Play("run");
-                    _audioPlayer.Play();
-                }   
+                _animation.Play("run");
+                _audioPlayer.Play();
             }
         }
+        else
+        {
+            // Caso contrário, o mouse fica parado
+            velocity.X = 0;
+            if (_animation.Animation != "run" && _animation.Animation != "idle")
+            {
+                _animation.Play("idle");
+            }
+        }
+
+        Velocity = velocity;
+        MoveAndSlide();
     }
 
 

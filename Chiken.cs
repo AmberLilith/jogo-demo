@@ -55,7 +55,7 @@ public abstract partial class Chiken : Area2D
             Tween tween = GetTree().CreateTween();
             
             // Move baseado na direção calculada (fugirParaDirecao será 1 ou -1)
-            float distanciaFuga = 400.0f * runAwayTowards;
+            float distanciaFuga = 100.0f * runAwayTowards;
 
             tween.TweenProperty(AnimationNode, "position:x", AnimationNode.Position.X + distanciaFuga, 1.0f)
                  .SetTrans(Tween.TransitionType.Quad)
@@ -93,8 +93,6 @@ public override void _PhysicsProcess(double delta)
 
     private void showEggs()
     {
-        var currentEggsPosY = _eggs.Position.Y;
-        _eggs.Position = new Vector2(5.0f, currentEggsPosY);
         _eggs.Visible = true;
 
         foreach (var egg in _eggs.GetChildren())

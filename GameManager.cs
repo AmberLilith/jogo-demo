@@ -10,6 +10,8 @@ public partial class GameManager : Node
     public int Score = 0;
     public Vector2 LastCheckpointPos;
 
+    private Player _player;
+
     public override void _Ready()
     {
         Instance = this;
@@ -23,5 +25,14 @@ public partial class GameManager : Node
     {
         CurrentLives = MaxLives;
         Score = 0;
+    }
+
+    public void StartNewGame()
+    {
+        CurrentLives = MaxLives;
+        Score = 0;
+        
+        // Reseta o checkpoint para que o player comece na posição inicial da cena
+        LastCheckpointPos = Vector2.Zero;
     }
 }

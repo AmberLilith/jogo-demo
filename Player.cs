@@ -5,7 +5,7 @@ public partial class Player : CharacterBody2D
 {
 	public const float Speed = 200.0f;
 	public const float RunSpeed = 400.0f;
-	public const float JumpVelocity = -450.0f;
+	public const float JumpVelocity = -600.0f;
 
     private bool _dubleJump = false;
     
@@ -85,6 +85,7 @@ public override void _PhysicsProcess(double delta)
         _dubleJump = false; // consome o segundo pulo
     }
 }
+
 
 
     if (direction != Vector2.Zero)
@@ -234,7 +235,7 @@ private async void Respawn()
 	{
 		if (_ScoreText != null)
 		{
-			_ScoreText.Text = "Bebezinhas coletadas: " + Points;
+			_ScoreText.Text = "Ovos de Bebezinhas coletados: " + Points;
 		}
 	}
 

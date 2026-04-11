@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://copfxjqt18kbi"]
+
+[ext_resource type="Script" uid="uid://jcpn1qnhsfb1" path="res://Amber.cs" id="1_aqyai"]
+[ext_resource type="Texture2D" uid="uid://bmnwrc8as6s0r" path="res://images/amber.png" id="2_p2n0o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2n0o"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(265, 0, 265, 867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8djsl"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(530, 0, 265, 867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdxmp"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(795, 0, 265, 867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5sr4"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(1060, 0, 265, 867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qngy"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(1325, 0, 265, 867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6egd8"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(1590, 0, 265, 867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqyai"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(265, 0, 265, 867)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ma2i"]
+atlas = ExtResource("2_p2n0o")
+region = Rect2(530, 0, 265, 867)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lolxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2n0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8djsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdxmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5sr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qngy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6egd8")
+}],
+"loop": true,
+"name": &"celebrate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqyai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ma2i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Amber" type="CharacterBody2D" unique_id=272224271]
+script = ExtResource("1_aqyai")
+
+[node name="AmberAnimation" type="AnimatedSprite2D" parent="." unique_id=791182384]
+position = Vector2(-16, 59)
+scale = Vector2(0.38671875, 0.2060547)
+sprite_frames = SubResource("SpriteFrames_lolxs")
+animation = &"idle"
+frame_progress = 0.47834998

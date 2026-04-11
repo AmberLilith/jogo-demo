@@ -16,15 +16,21 @@
 [ext_resource type="PackedScene" uid="uid://fvu6is4oge35" path="res://funk_enemy.tscn" id="12_wjb0r"]
 [ext_resource type="Script" uid="uid://domkl8w4h4lax" path="res://DeathZone.cs" id="13_mc2jv"]
 [ext_resource type="Script" uid="uid://6k7wia5geqei" path="res://GameOverScreen.cs" id="14_70uel"]
+[ext_resource type="Script" uid="uid://bcelgnqtymnya" path="res://FinalBarrier.cs" id="14_wukud"]
 [ext_resource type="PackedScene" uid="uid://bdcfuipu6vk37" path="res://ExtraLife.tscn" id="15_hiqwa"]
+[ext_resource type="Texture2D" uid="uid://dtbby6wf4p8l8" path="res://images/flag_end.png" id="15_mc2jv"]
 [ext_resource type="PackedScene" uid="uid://qs6gk42tkr7p" path="res://checkpoint.tscn" id="16_2u3nc"]
+[ext_resource type="AudioStream" uid="uid://blmlucfakvsr6" path="res://audios/victory.mp3" id="16_bo7i5"]
+[ext_resource type="PackedScene" uid="uid://b3686ngo3itvd" path="res://judite.tscn" id="19_26xuy"]
 [ext_resource type="PackedScene" uid="uid://cgjeaygmyoc40" path="res://mouse.tscn" id="19_cbp6q"]
+[ext_resource type="PackedScene" uid="uid://copfxjqt18kbi" path="res://amber.tscn" id="21_bc84e"]
+[ext_resource type="PackedScene" uid="uid://dukbrt2yk4cff" path="res://finish_game.tscn" id="23_il2jm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
-size = Vector2(288.3333, 550)
+size = Vector2(288.3333, 336.6667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udxuc"]
-size = Vector2(288.3333, 310.00003)
+size = Vector2(288.3333, 241.66664)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwdvv"]
 atlas = ExtResource("3_hiqwa")
@@ -4649,6 +4655,75 @@ sources/0 = SubResource("TileSetAtlasSource_pfhxm")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oi55"]
 size = Vector2(55, 545)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gggvi"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(0, 0, 192, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w44yn"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(192, 0, 192, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ah6f"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(384, 0, 192, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1i3r"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(576, 0, 192, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my276"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(768, 0, 192, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx0jh"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(960, 0, 192, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ew0l"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(1152, 0, 192, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryup7"]
+atlas = ExtResource("15_mc2jv")
+region = Rect2(1344, 0, 192, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytpkv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gggvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w44yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ah6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1i3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my276")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx0jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ew0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryup7")
+}],
+"loop": false,
+"name": &"activated",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"deactivated",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57gmc"]
 size = Vector2(17957, 24)
 
@@ -4666,23 +4741,24 @@ texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
 z_index = 1
-position = Vector2(6500, 500)
+position = Vector2(3504.0002, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 
 [node name="PlayerDefaultCollision" type="CollisionShape2D" parent="Player" unique_id=116075104]
+position = Vector2(0, 45)
 shape = SubResource("RectangleShape2D_xwo6f")
 
 [node name="PlayerSquattingCollision" type="CollisionShape2D" parent="Player" unique_id=20854465]
-position = Vector2(0, 130)
+position = Vector2(0, 95.833374)
 shape = SubResource("RectangleShape2D_udxuc")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="Player" unique_id=1949477913]
-position = Vector2(-83.33263, 39.99996)
-scale = Vector2(2.6994839, 2.2196975)
+position = Vector2(-36.66793, 80.000015)
+scale = Vector2(1.7741627, 1.3882577)
 sprite_frames = SubResource("SpriteFrames_qobow")
 animation = &"jump"
-frame_progress = 0.5946483
+frame_progress = 0.3904324
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1780601059]
 position = Vector2(-3.333, -596.667)
@@ -4738,29 +4814,34 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
-text = "Bêbezinhas coletadas: 0"
+text = "Ovos Bebezinha: 0"
 
-[node name="Virginia2" parent="." unique_id=813975085 instance=ExtResource("11_il2jm")]
-position = Vector2(1854, 554)
-
-[node name="StartBarrer" type="StaticBody2D" parent="." unique_id=1384394909]
+[node name="StartBarrier" type="StaticBody2D" parent="." unique_id=1384394909]
 position = Vector2(-114, 402)
 
-[node name="StartBarrerCollison" type="CollisionShape2D" parent="StartBarrer" unique_id=923636429]
+[node name="StartBarrerCollison" type="CollisionShape2D" parent="StartBarrier" unique_id=923636429]
 position = Vector2(-1, -106.5)
 shape = SubResource("RectangleShape2D_0oi55")
 
-[node name="FinalBarrer" type="StaticBody2D" parent="." unique_id=1933898986]
+[node name="FinalBarrier" type="Area2D" parent="." unique_id=1866393195]
 position = Vector2(9000, 402)
+script = ExtResource("14_wukud")
 
-[node name="FinalBarrerCollision" type="CollisionShape2D" parent="FinalBarrer" unique_id=1528832074]
-position = Vector2(9000, -106.25)
+[node name="FinalFlag" type="AnimatedSprite2D" parent="FinalBarrier" unique_id=1634876413]
+position = Vector2(51, -29)
+sprite_frames = SubResource("SpriteFrames_ytpkv")
+animation = &"deactivated"
+
+[node name="FinalBarrerCollision" type="CollisionShape2D" parent="FinalBarrier" unique_id=1528832074]
 shape = SubResource("RectangleShape2D_0oi55")
 
-[node name="topBarrer" type="StaticBody2D" parent="." unique_id=1283752428]
+[node name="AudioPlayerFinalBarrier" type="AudioStreamPlayer" parent="FinalBarrier" unique_id=1519163495]
+stream = ExtResource("16_bo7i5")
+
+[node name="topBarrier" type="StaticBody2D" parent="." unique_id=1283752428]
 position = Vector2(62, 30)
 
-[node name="TopBarrerCollision" type="CollisionShape2D" parent="topBarrer" unique_id=778133160]
+[node name="TopBarrerCollision" type="CollisionShape2D" parent="topBarrier" unique_id=778133160]
 position = Vector2(8974.5, 2)
 shape = SubResource("RectangleShape2D_57gmc")
 
@@ -4813,3 +4894,29 @@ position = Vector2(3933, 470)
 
 [node name="Mouse" parent="." unique_id=365002231 instance=ExtResource("19_cbp6q")]
 position = Vector2(6999, 549)
+
+[node name="Judite" parent="." unique_id=1502595574 instance=ExtResource("19_26xuy")]
+position = Vector2(1331, 552)
+
+[node name="Virginia" parent="." unique_id=1460650565 instance=ExtResource("11_il2jm")]
+position = Vector2(5048, 540)
+
+[node name="Mouse2" parent="." unique_id=670045779 instance=ExtResource("19_cbp6q")]
+position = Vector2(7511, 543)
+
+[node name="Mouse3" parent="." unique_id=1266806955 instance=ExtResource("19_cbp6q")]
+position = Vector2(8045, 546)
+
+[node name="Mouse4" parent="." unique_id=1499193253 instance=ExtResource("19_cbp6q")]
+position = Vector2(8539, 551)
+
+[node name="FinishGame" parent="." unique_id=262015965 instance=ExtResource("23_il2jm")]
+
+[node name="Amber" parent="." unique_id=272224271 instance=ExtResource("21_bc84e")]
+position = Vector2(8878, 419)
+
+[node name="Judite2" parent="." unique_id=666396012 instance=ExtResource("19_26xuy")]
+position = Vector2(343, 538)
+
+[node name="Virginia2" parent="." unique_id=1866787268 instance=ExtResource("11_il2jm")]
+position = Vector2(804, 536)
