@@ -48,8 +48,8 @@ public partial class Cat : CharacterBody2D
 
     for (int i = 0; i < GetSlideCollisionCount(); i++) //Como Cat é um CharacterBody2D, não usamos método onBodyEntered. A detecção é feita via GetSlideCollision
     {
-        var colisao = GetSlideCollision(i);
-        if (colisao.GetCollider() is Player)
+        var collision = GetSlideCollision(i);
+        if (collision.GetCollider() is Player)
         {
             _audioPlayer.Play(); // toca o som do gato ao acertar o player
         }

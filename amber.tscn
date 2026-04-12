@@ -76,8 +76,8 @@ animations = [{
 script = ExtResource("1_aqyai")
 
 [node name="AmberAnimation" type="AnimatedSprite2D" parent="." unique_id=791182384]
-position = Vector2(-16, 59)
-scale = Vector2(0.38671875, 0.2060547)
+position = Vector2(-16, 35.662354)
+scale = Vector2(0.38671875, 0.2598901)
 sprite_frames = SubResource("SpriteFrames_lolxs")
 animation = &"idle"
 frame_progress = 0.47834998

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class FireWheel : Node2D
+public partial class FireWheel : Area2D
 {
     [Export] public float Amplitude = 180f;
     [Export] public float Speed = 3f;
@@ -15,6 +15,7 @@ public partial class FireWheel : Node2D
 
     public override void _Ready()
     {
+        BodyEntered += OnBodyEntered;
         _startY = Position.Y;
 
         // define o ponto inicial da onda
@@ -32,4 +33,12 @@ public partial class FireWheel : Node2D
 
         Rotation += RotationSpeed * d;
     }
+
+    private void OnBodyEntered(Node2D body)
+{
+    if (body is Player player)
+    {
+        player.Die();
+    }
+}
 }

@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://copfxjqt18kbi" path="res://amber.tscn" id="21_bc84e"]
 [ext_resource type="PackedScene" uid="uid://dukbrt2yk4cff" path="res://finish_game.tscn" id="23_il2jm"]
 [ext_resource type="PackedScene" uid="uid://b3us1jy74a5hg" path="res://fire_wheel.tscn" id="26_bo7i5"]
+[ext_resource type="PackedScene" uid="uid://khkqc5miw6bx" path="res://stone_ball.tscn" id="28_o3ebs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(176.66666, 446.66672)
@@ -4753,7 +4754,7 @@ texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
 z_index = 1
-position = Vector2(500, 500)
+position = Vector2(8700, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 
@@ -4959,3 +4960,6 @@ position = Vector2(601, 325)
 
 [node name="Virginia3" parent="." unique_id=1980439844 instance=ExtResource("11_il2jm")]
 position = Vector2(33, 536)
+
+[node name="StoneBall" parent="." unique_id=304317305 instance=ExtResource("28_o3ebs")]
+position = Vector2(3400, 492)

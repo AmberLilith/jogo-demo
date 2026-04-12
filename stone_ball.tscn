@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://khkqc5miw6bx"]
+
+[ext_resource type="Texture2D" uid="uid://c2gb806qniyig" path="res://images/stone_ball.png" id="1_61q7j"]
+[ext_resource type="Script" uid="uid://5ly24hdsfw45" path="res://StoneBall.cs" id="1_s7vla"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7vla"]
+radius = 74.168724
+
+[node name="StoneBall" type="Area2D" unique_id=304317305 groups=["enemies"]]
+script = ExtResource("1_s7vla")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=847302371]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_61q7j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=714434567]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_s7vla")

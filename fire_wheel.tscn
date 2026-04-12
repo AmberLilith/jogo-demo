@@ -6,7 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_aljlq"]
 radius = 121.004135
 
-[node name="FireWheel" type="Area2D" unique_id=1265424201]
+[node name="FireWheel" type="Area2D" unique_id=1428666827]
+position = Vector2(-1, 0)
 script = ExtResource("1_npvdg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=261249243]
