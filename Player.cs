@@ -20,10 +20,12 @@ public partial class Player : CharacterBody2D
 
 	public int Points = 0;
 
-	private CollisionShape2D _colisaoEmPe;
-	private CollisionShape2D _colisaoAgachado;
+	private CollisionShape2D _standUpCollision;
+	private CollisionShape2D _squatCollision;
 
 	private bool _isInvincible = false;
+
+    private AudioStreamPlayer _audioPlayer;
 
 	public override void _Ready()
 	{
@@ -33,9 +35,10 @@ public partial class Player : CharacterBody2D
 		}
 		_gameOverScreen = GetParent().GetNode<CanvasLayer>("GameOverScreen");
 		_animation = GetNode<AnimatedSprite2D>("PlayerAnimation");
-		_colisaoEmPe = GetNode<CollisionShape2D>("PlayerDefaultCollision");
-		_colisaoAgachado = GetNode<CollisionShape2D>("PlayerSquattingCollision");
+		_standUpCollision = GetNode<CollisionShape2D>("PlayerDefaultCollision");
+		_squatCollision = GetNode<CollisionShape2D>("PlayerSquattingCollision");
 		_gameOverScreen = GetParent().GetNode<CanvasLayer>("GameOverScreen");
+        _audioPlayer = GetNode<AudioStreamPlayer>("PlayerAudioPlayer");
 		GameManager.Instance.AddEgg(0);
 	}
 
@@ -100,8 +103,8 @@ public override void _PhysicsProcess(double delta)
         if (!isSquatting)
         {
             _animation.Play("jump");
-            _colisaoEmPe.SetDeferred("disabled", false);
-            _colisaoAgachado.SetDeferred("disabled", true);
+            _standUpCollision.SetDeferred("disabled", false);
+            _squatCollision.SetDeferred("disabled", true);
         }
     }
     else if (isSquatting && direction != Vector2.Zero)
@@ -110,8 +113,8 @@ public override void _PhysicsProcess(double delta)
         _animation.SpeedScale = 1.0f;
 		_animation.Play("walkSquatting");
 		_animation.Offset = new Vector2(0, 475); // Ajusta o offset para alinhar a animação agachada, pois não consegui ajustar no editor
-		_colisaoEmPe.SetDeferred("disabled", true);
-		_colisaoAgachado.SetDeferred("disabled", false);
+		_standUpCollision.SetDeferred("disabled", true);
+		_squatCollision.SetDeferred("disabled", false);
     }
     else if (isSquatting)
     {
@@ -120,14 +123,14 @@ public override void _PhysicsProcess(double delta)
         {
             _animation.SpeedScale = 2.0f;
             _animation.Play("squatting");
-            _colisaoEmPe.SetDeferred("disabled", true);
-            _colisaoAgachado.SetDeferred("disabled", false);
+            _standUpCollision.SetDeferred("disabled", true);
+            _squatCollision.SetDeferred("disabled", false);
         }
     }
     else if (direction != Vector2.Zero)
     {
-        _colisaoEmPe.SetDeferred("disabled", false);
-        _colisaoAgachado.SetDeferred("disabled", true);
+        _standUpCollision.SetDeferred("disabled", false);
+        _squatCollision.SetDeferred("disabled", true);
 
         if (isRunning)
         {
@@ -145,8 +148,8 @@ public override void _PhysicsProcess(double delta)
         // Parado no chão
         _animation.SpeedScale = 0.2f;
         _animation.Play("idle");
-        _colisaoEmPe.SetDeferred("disabled", false);
-        _colisaoAgachado.SetDeferred("disabled", true);
+        _standUpCollision.SetDeferred("disabled", false);
+        _squatCollision.SetDeferred("disabled", true);
     }
 
     for (int i = 0; i < GetSlideCollisionCount(); i++)//Como Player é um CharacterBody2D, não usamos método onBodyEntered. A detecção é feita via GetSlideCollision
@@ -163,13 +166,14 @@ public override void _PhysicsProcess(double delta)
 public async void Die()
 {
     if (_isDead || _isInvincible) return; // ✅ Invencível também bloqueia morte
+    _audioPlayer.Play();
     _isDead = true;
     GameManager.Instance.AddLifes(-1);
     
     _animation.SpeedScale = 0.5f;
     _animation.Play("die");
-    _colisaoEmPe.SetDeferred("disabled", true);
-    _colisaoAgachado.SetDeferred("disabled", true);
+    _standUpCollision.SetDeferred("disabled", true);
+    _squatCollision.SetDeferred("disabled", true);
     Velocity = new Vector2(0, -400);
 
     await ToSignal(GetTree().CreateTimer(1.5f), SceneTreeTimer.SignalName.Timeout);
@@ -185,8 +189,8 @@ private async void Respawn()
     _isDead = false;
     _isInvincible = true; // ✅ Ativa invencibilidade
 
-    _colisaoEmPe.SetDeferred("disabled", false);
-    _colisaoAgachado.SetDeferred("disabled", true);
+    _standUpCollision.SetDeferred("disabled", false);
+    _squatCollision.SetDeferred("disabled", true);
     _animation.SpeedScale = 1.0f;
     Velocity = Vector2.Zero;
     GlobalPosition = GameManager.Instance.LastCheckpointPos;

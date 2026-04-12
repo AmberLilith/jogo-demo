@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dxl2pthjog7ut" path="res://crentelha_enemy.tscn" id="8_26xuy"]
 [ext_resource type="Texture2D" uid="uid://dijv2fu5x6526" path="res://obstacles.png" id="9_bc84e"]
 [ext_resource type="Texture2D" uid="uid://70510fpp435v" path="res://images/walkSquating.png" id="9_ikiii"]
+[ext_resource type="AudioStream" uid="uid://dkifuhjgc2qh5" path="res://audios/die.mp3" id="10_k83mh"]
 [ext_resource type="PackedScene" uid="uid://bwuaotorhsu0a" path="res://virginia.tscn" id="11_il2jm"]
 [ext_resource type="Texture2D" uid="uid://cs4web6v8ldrs" path="res://images/agua.png" id="12_ikiii"]
 [ext_resource type="PackedScene" uid="uid://fvu6is4oge35" path="res://funk_enemy.tscn" id="12_wjb0r"]
@@ -4781,6 +4782,9 @@ limit_right = 9998974
 limit_bottom = 658
 position_smoothing_enabled = true
 
+[node name="PlayerAudioPlayer" type="AudioStreamPlayer" parent="Player" unique_id=1690676153]
+stream = ExtResource("10_k83mh")
+
 [node name="CrentelhaEnemy" parent="." unique_id=707616710 instance=ExtResource("8_26xuy")]
 position = Vector2(1051, 331)
 
@@ -4910,9 +4914,6 @@ position = Vector2(4417, 482)
 [node name="FunkEnemy" parent="." unique_id=906548472 instance=ExtResource("12_wjb0r")]
 position = Vector2(3933, 470)
 
-[node name="Mouse" parent="." unique_id=365002231 instance=ExtResource("19_cbp6q")]
-position = Vector2(6999, 549)
-
 [node name="Judite" parent="." unique_id=1502595574 instance=ExtResource("19_26xuy")]
 position = Vector2(1331, 552)
 
@@ -4936,11 +4937,8 @@ stream = ExtResource("16_bo7i5")
 [node name="Amber" parent="." unique_id=272224271 instance=ExtResource("21_bc84e")]
 position = Vector2(8878, 419)
 
-[node name="Judite2" parent="." unique_id=666396012 instance=ExtResource("19_26xuy")]
-position = Vector2(343, 538)
-
 [node name="Virginia2" parent="." unique_id=1866787268 instance=ExtResource("11_il2jm")]
-position = Vector2(804, 536)
+position = Vector2(609, 552)
 
 [node name="FireWheel" parent="." unique_id=1679110221 instance=ExtResource("26_bo7i5")]
 position = Vector2(6337, 278)
@@ -4957,9 +4955,6 @@ position = Vector2(682, 313)
 
 [node name="ExtraLife" parent="." unique_id=2005251905 instance=ExtResource("15_hiqwa")]
 position = Vector2(601, 325)
-
-[node name="Virginia3" parent="." unique_id=1980439844 instance=ExtResource("11_il2jm")]
-position = Vector2(33, 536)
 
 [node name="StoneBall" parent="." unique_id=304317305 instance=ExtResource("28_o3ebs")]
 position = Vector2(3400, 492)

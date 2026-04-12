@@ -65,5 +65,5 @@ layout_mode = 2
 text = "Jogar Novamente"
 
 [node name="Amber" parent="." unique_id=272224271 instance=ExtResource("2_6ivi6")]
-position = Vector2(597, 356)
+position = Vector2(597, 384)
 animationToShow = "celebrate"
