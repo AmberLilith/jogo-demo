@@ -4942,6 +4942,7 @@ position = Vector2(804, 536)
 
 [node name="FireWheel" parent="." unique_id=1679110221 instance=ExtResource("26_bo7i5")]
 position = Vector2(6337, 278)
+StartAtTop = false
 
 [node name="FireWheel2" parent="." unique_id=1265424201 instance=ExtResource("26_bo7i5")]
 position = Vector2(6689, 275)

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://2ws64jspi1m0" path="res://audios/mouse_noise.mp3" id="3_86rlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6j7kw"]
-size = Vector2(107.5, 80)
+size = Vector2(57, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6s167"]
 atlas = ExtResource("2_18cwl")
@@ -76,8 +76,8 @@ script = ExtResource("1_1jbr0")
 shape = SubResource("RectangleShape2D_6j7kw")
 
 [node name="MouseAnimation" type="AnimatedSprite2D" parent="." unique_id=260122015]
-position = Vector2(0, -2.874999)
-scale = Vector2(0.62650603, 0.5254491)
+position = Vector2(19, -27)
+scale = Vector2(0.62650603, 0.50224555)
 sprite_frames = SubResource("SpriteFrames_0ca18")
 animation = &"run"
 frame_progress = 0.24266562

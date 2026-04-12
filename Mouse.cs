@@ -69,15 +69,6 @@ public partial class Mouse : CharacterBody2D
                 _audioPlayer.Play();
             }
         }
-        else
-        {
-            // Caso contrário, o mouse fica parado
-            velocity.X = 0;
-            if (_animation.Animation != "run" && _animation.Animation != "idle")
-            {
-                _animation.Play("idle");
-            }
-        }
 
         Velocity = velocity;
         MoveAndSlide();
