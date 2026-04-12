@@ -14,7 +14,6 @@ public partial class DeathZone : Area2D
 		// Note: Make sure your Player class is now named "Player"
 		if (body is Player player)
 		{
-			GD.Print("Player fell into the abyss!");
 			player.Die();
 		}
 		else

@@ -18,7 +18,7 @@ public partial class ExtraLife : Area2D
 
 private async void OnBodyEntered(Node2D body)
 {
-	if (body is Player player)
+	if (body is Player)
 	{
 		_audioPlayer.Play();
 		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
@@ -42,7 +42,7 @@ private async void OnBodyEntered(Node2D body)
 
 		await ToSignal(flyTween, "finished");
 		
-		player.AddLife(1);
+		GameManager.Instance.AddLifes(1);
 		QueueFree();
 	}
 }

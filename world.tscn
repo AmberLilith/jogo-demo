@@ -4956,3 +4956,6 @@ position = Vector2(682, 313)
 
 [node name="ExtraLife" parent="." unique_id=2005251905 instance=ExtResource("15_hiqwa")]
 position = Vector2(601, 325)
+
+[node name="Virginia3" parent="." unique_id=1980439844 instance=ExtResource("11_il2jm")]
+position = Vector2(33, 536)

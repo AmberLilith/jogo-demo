@@ -39,8 +39,6 @@ public partial class FunkEnemy : CharacterBody2D
             Vector2 direcao = _animacao.FlipH ? Vector2.Right : Vector2.Left;
             newBullet.Direction = direcao;
 
-            GD.Print($"Bala criada em: {newBullet.GlobalPosition} | Direção: {newBullet.Direction}");
-
             GetTree().Root.AddChild(newBullet);
         }
         else

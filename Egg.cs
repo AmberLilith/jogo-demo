@@ -37,7 +37,7 @@ private async void OnBodyEntered(Node2D body)
 
 		await ToSignal(flyTween, "finished");
 
-        player.AddPoints(1);
+        GameManager.Instance.AddEgg(1);
 
 		QueueFree();
 	}

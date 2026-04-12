@@ -30,7 +30,6 @@ public abstract partial class Chiken : Area2D
         if (SoundNode != null)
             SoundNode.Finished += () => showEggs();
         _eggs = GetNode<Node2D>("Eggs");
-        SoundNode.Finished += () => showEggs();
         // Mostra os ovos depois de tocar o som 
     }
    private void OnBodyEntered(Node2D body)

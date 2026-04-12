@@ -26,7 +26,6 @@ public partial class FinalBarrier : StaticBody2D
             _finalFlag.Play("activated");
             _finalFlag.AnimationFinished += () => 
             {
-                GD.Print("Player aqui");
                 finishScreen.ShowFinishScreen();
             };
             

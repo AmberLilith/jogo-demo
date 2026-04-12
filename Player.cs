@@ -19,8 +19,6 @@ public partial class Player : CharacterBody2D
 	private bool _isDead = false;
 
 	public int Points = 0;
-	private Label _ScoreText;
-	private Label _LifesText;
 
 	private CollisionShape2D _colisaoEmPe;
 	private CollisionShape2D _colisaoAgachado;
@@ -37,12 +35,8 @@ public partial class Player : CharacterBody2D
 		_animation = GetNode<AnimatedSprite2D>("PlayerAnimation");
 		_colisaoEmPe = GetNode<CollisionShape2D>("PlayerDefaultCollision");
 		_colisaoAgachado = GetNode<CollisionShape2D>("PlayerSquattingCollision");
-
-		_ScoreText = GetNode<Label>("../HUD//HBoxContainer/Score");
-		_LifesText = GetNode<Label>("../HUD/HBoxContainer/Lifes");
 		_gameOverScreen = GetParent().GetNode<CanvasLayer>("GameOverScreen");
-		UpdateScore();
-		UpdateLifes();
+		GameManager.Instance.AddEgg(0);
 	}
 
 public override void _PhysicsProcess(double delta)
@@ -170,8 +164,8 @@ public async void Die()
 {
     if (_isDead || _isInvincible) return; // ✅ Invencível também bloqueia morte
     _isDead = true;
-    GameManager.Instance.CurrentLives--;
-    UpdateLifes();
+    GameManager.Instance.AddLifes(-1);
+    
     _animation.SpeedScale = 0.5f;
     _animation.Play("die");
     _colisaoEmPe.SetDeferred("disabled", true);
@@ -180,7 +174,7 @@ public async void Die()
 
     await ToSignal(GetTree().CreateTimer(1.5f), SceneTreeTimer.SignalName.Timeout);
 
-    if (GameManager.Instance.CurrentLives > 0)
+    if (GameManager.Instance.CurrentLifes > 0)
         Respawn();
     else
         ShowGameOver();
@@ -216,39 +210,6 @@ private async void Respawn()
 		if (_gameOverScreen != null)
 		{
 			_gameOverScreen.Visible = true;
-		}
-	}
-
-	public void AddPoints(int value)
-	{
-		Points += value;
-		UpdateScore();
-	}
-
-	public void AddLife(int value)
-	{
-		GameManager.Instance.CurrentLives += value;
-		UpdateLifes();
-	}
-
-	private void UpdateScore()
-	{
-		if (_ScoreText != null)
-		{
-			_ScoreText.Text = "Ovos de Bebezinhas coletados: " + Points;
-		}
-	}
-
-	private void UpdateLifes()
-	{
-		if (_LifesText != null)
-		{
-			GD.Print("Atualizando label para: " + GameManager.Instance.CurrentLives);
-			_LifesText.Text = "Vidas: " + GameManager.Instance.CurrentLives;
-		}
-		else
-		{
-			GD.Print("Erro: _LifesText é nulo!");
 		}
 	}
 }

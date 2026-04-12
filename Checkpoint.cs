@@ -10,11 +10,7 @@ public partial class Checkpoint : Area2D
         {
             _activated = true;
             // Salva a posição global deste checkpoint no GameManager
-            GameManager.Instance.LastCheckpointPos = GlobalPosition;
-            
-            GD.Print("Checkpoint Ativado em: " + GlobalPosition);
-            
-           
+            GameManager.Instance.LastCheckpointPos = GlobalPosition;          
             GetNode<AnimatedSprite2D>("CheckpointAnimation").Play("activated");
         }
     }
