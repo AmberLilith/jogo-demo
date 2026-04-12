@@ -25,12 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://cgjeaygmyoc40" path="res://mouse.tscn" id="19_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://copfxjqt18kbi" path="res://amber.tscn" id="21_bc84e"]
 [ext_resource type="PackedScene" uid="uid://dukbrt2yk4cff" path="res://finish_game.tscn" id="23_il2jm"]
+[ext_resource type="PackedScene" uid="uid://b3us1jy74a5hg" path="res://fire_wheel.tscn" id="26_bo7i5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
-size = Vector2(288.3333, 336.6667)
+size = Vector2(146.66568, 336.6667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udxuc"]
-size = Vector2(288.3333, 241.66664)
+size = Vector2(150.00032, 241.66664)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwdvv"]
 atlas = ExtResource("3_hiqwa")
@@ -4751,16 +4752,16 @@ texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
 z_index = 1
-position = Vector2(8200, 500)
+position = Vector2(5600, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 
 [node name="PlayerDefaultCollision" type="CollisionShape2D" parent="Player" unique_id=116075104]
-position = Vector2(0, 45)
+position = Vector2(-16.666016, 45)
 shape = SubResource("RectangleShape2D_xwo6f")
 
 [node name="PlayerSquattingCollision" type="CollisionShape2D" parent="Player" unique_id=20854465]
-position = Vector2(0, 95.833374)
+position = Vector2(-11.666016, 95.833374)
 shape = SubResource("RectangleShape2D_udxuc")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="Player" unique_id=1949477913]
@@ -4938,3 +4939,12 @@ position = Vector2(343, 538)
 
 [node name="Virginia2" parent="." unique_id=1866787268 instance=ExtResource("11_il2jm")]
 position = Vector2(804, 536)
+
+[node name="FireWheel" parent="." unique_id=1679110221 instance=ExtResource("26_bo7i5")]
+position = Vector2(6337, 278)
+
+[node name="FireWheel2" parent="." unique_id=1265424201 instance=ExtResource("26_bo7i5")]
+position = Vector2(6689, 275)
+
+[node name="FireWheel3" parent="." unique_id=1222601576 instance=ExtResource("26_bo7i5")]
+position = Vector2(5978, 275)

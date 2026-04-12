@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b3us1jy74a5hg"]
+
+[ext_resource type="Script" uid="uid://bltl2sdkdqvj8" path="res://FireWheel.cs" id="1_npvdg"]
+[ext_resource type="Texture2D" uid="uid://wqfyol1lrcbg" path="res://images/fire_wheels.png" id="2_aljlq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aljlq"]
+radius = 121.004135
+
+[node name="FireWheel" type="Area2D" unique_id=1265424201]
+script = ExtResource("1_npvdg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=261249243]
+scale = Vector2(0.4304452, 0.39741382)
+texture = ExtResource("2_aljlq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=947634096]
+shape = SubResource("CircleShape2D_aljlq")

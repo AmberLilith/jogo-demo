@@ -95,7 +95,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef5aw"]
-size = Vector2(143.25, 224)
+size = Vector2(75.625, 224)
 
 [node name="FunkEnemy" type="CharacterBody2D" unique_id=906548472 groups=["enemies"]]
 script = ExtResource("1_ef5aw")
@@ -114,6 +114,7 @@ position = Vector2(-26, -23)
 wait_time = 2.0
 
 [node name="FunkEnemyCollision" type="CollisionShape2D" parent="." unique_id=783731218 groups=["enemies"]]
+position = Vector2(33.8125, 0)
 shape = SubResource("RectangleShape2D_ef5aw")
 
 [node name="FunkEnemyAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=876770800]
