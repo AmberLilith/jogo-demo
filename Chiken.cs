@@ -57,7 +57,7 @@ public abstract partial class Chiken : Area2D
             // Move baseado na direção calculada (fugirParaDirecao será 1 ou -1)
             float distanciaFuga = 100.0f * runAwayTowards;
 
-            tween.TweenProperty(AnimationNode, "position:x", AnimationNode.Position.X + distanciaFuga, 1.0f)
+            tween.TweenProperty(AnimationNode, "position:x", AnimationNode.Position.X + distanciaFuga, 0.5f)
                  .SetTrans(Tween.TransitionType.Quad)
                  .SetEase(Tween.EaseType.Out);
 

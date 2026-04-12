@@ -3,8 +3,10 @@ using System;
 
 public partial class Egg : Area2D
 {
+	private AudioStreamPlayer _audioPlayer;
     	public override void _Ready()
 	{
+		_audioPlayer = GetNode<AudioStreamPlayer>("EggAudioPlayer");
 		 GetNode<CollisionShape2D>("EggCollision").SetDeferred("disabled", true);
 		// Conecta o sinal de quando algo entra na área
 		BodyEntered += OnBodyEntered;
@@ -14,6 +16,7 @@ private async void OnBodyEntered(Node2D body)
 {
 	if (body is Player player)
 	{
+		_audioPlayer.Play();
 
 		// 1. Pegamos a Label
 		Label scoreLabel = GetTree().Root.GetNode<Label>("World/HUD/HBoxContainer/Score");

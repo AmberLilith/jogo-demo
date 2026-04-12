@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjwhv71ousi3n" path="res://ExtraLife.cs" id="1_kp6il"]
 [ext_resource type="Texture2D" uid="uid://cq278acbg16g6" path="res://images/extra_life.png" id="2_0k1q4"]
+[ext_resource type="AudioStream" uid="uid://b7yofxrx22u3q" path="res://audios/gotten_life.mp3" id="3_0k1q4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_te6x4"]
 radius = 305.4048
@@ -10,6 +11,9 @@ radius = 305.4048
 
 [node name="ExtraLife" type="Area2D" parent="." unique_id=1706968775]
 script = ExtResource("1_kp6il")
+
+[node name="ExtraLifeAudioPlayer" type="AudioStreamPlayer" parent="ExtraLife" unique_id=201595874]
+stream = ExtResource("3_0k1q4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExtraLife" unique_id=660323226]
 position = Vector2(-1, 0)

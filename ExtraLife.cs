@@ -6,8 +6,11 @@ public partial class ExtraLife : Area2D
 	// Você pode definir um valor para o item, se quiser
 	[Export] public int Value = 1;
 
+	private AudioStreamPlayer _audioPlayer;
+
 	public override void _Ready()
 	{
+		_audioPlayer = GetNode<AudioStreamPlayer>("ExtraLifeAudioPlayer");
 		// Conecta o sinal de quando algo entra na área
 		BodyEntered += OnBodyEntered;
 		Spin();
@@ -17,6 +20,7 @@ private async void OnBodyEntered(Node2D body)
 {
 	if (body is Player player)
 	{
+		_audioPlayer.Play();
 		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
 
 		// 1. Pegamos a Label
