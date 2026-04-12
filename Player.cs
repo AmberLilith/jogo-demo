@@ -155,7 +155,7 @@ public override void _PhysicsProcess(double delta)
         _colisaoAgachado.SetDeferred("disabled", true);
     }
 
-    for (int i = 0; i < GetSlideCollisionCount(); i++)
+    for (int i = 0; i < GetSlideCollisionCount(); i++)//Como Player é um CharacterBody2D, não usamos método onBodyEntered. A detecção é feita via GetSlideCollision
     {
         var collison = GetSlideCollision(i);
         var tockedObject = collison.GetCollider();
