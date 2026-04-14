@@ -4755,7 +4755,7 @@ texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
 z_index = 1
-position = Vector2(8700, 500)
+position = Vector2(0, 500)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_70uel")
 

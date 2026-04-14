@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://teswk1q1dwu2"]
+
+[ext_resource type="Script" uid="uid://dpyr33qlkyab4" path="res://FallingBlock.cs" id="1_87ehw"]
+[ext_resource type="Texture2D" uid="uid://b3a0k07ofd8qi" path="res://images/shaking_block.png" id="2_ad264"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsasr"]
+size = Vector2(88, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3yai"]
+size = Vector2(88, 31)
+
+[node name="FallingBlock" type="CharacterBody2D" unique_id=2111478986]
+script = ExtResource("1_87ehw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453548968]
+scale = Vector2(0.59248555, 0.629771)
+texture = ExtResource("2_ad264")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=631088432]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_bsasr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1345241705]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1379185124]
+position = Vector2(3, -22)
+shape = SubResource("RectangleShape2D_x3yai")
+
+[node name="Timer" type="Timer" parent="." unique_id=1421399752]

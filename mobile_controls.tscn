@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://q0pteqavqdtb"]
+
+[ext_resource type="Script" uid="uid://co5k4bhyw2fma" path="res://MobileControls.cs" id="1_m2tvd"]
+[ext_resource type="Texture2D" uid="uid://mtn1wd14t6i6" path="res://images/button_left.png" id="2_ui5ya"]
+[ext_resource type="Texture2D" uid="uid://8xioq2pv5p10" path="res://images/button_right.png" id="3_s3714"]
+[ext_resource type="Texture2D" uid="uid://0hbhsgav45pe" path="res://images/button_squat.png" id="4_wlcjf"]
+[ext_resource type="Texture2D" uid="uid://bduqjiyl2lylo" path="res://images/button_run.png" id="5_2b8le"]
+[ext_resource type="Texture2D" uid="uid://bejefs60xuw3r" path="res://images/button_jump.png" id="6_gbkng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b286x"]
+radius = 41.03
+
+[sub_resource type="ImageTexture" id="ImageTexture_kkojo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkojo"]
+radius = 41.03
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppxiu"]
+radius = 41.03
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ui5ya"]
+radius = 41.03
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_svdgb"]
+radius = 41.03
+
+[node name="MobileControls" type="CanvasLayer" unique_id=2103697700]
+layer = 19
+script = ExtResource("1_m2tvd")
+
+[node name="VBoxLeftRightSquat" type="VBoxContainer" parent="." unique_id=1208770549]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -242.0
+grow_vertical = 0
+
+[node name="HBoxSquat" type="HBoxContainer" parent="VBoxLeftRightSquat" unique_id=1253978354]
+layout_mode = 2
+
+[node name="BtnSquat" type="TouchScreenButton" parent="VBoxLeftRightSquat/HBoxSquat" unique_id=475445663]
+position = Vector2(79, 151)
+texture_normal = ExtResource("4_wlcjf")
+shape = SubResource("CircleShape2D_b286x")
+action = "squat"
+
+[node name="HBoxleftRight" type="HBoxContainer" parent="VBoxLeftRightSquat" unique_id=1469327190]
+layout_mode = 2
+
+[node name="BtnLeft" type="TouchScreenButton" parent="VBoxLeftRightSquat/HBoxleftRight" unique_id=1924361963]
+position = Vector2(17, 68)
+texture_normal = ExtResource("2_ui5ya")
+texture_pressed = SubResource("ImageTexture_kkojo")
+shape = SubResource("CircleShape2D_kkojo")
+action = "ui_left"
+
+[node name="BtnRight" type="TouchScreenButton" parent="VBoxLeftRightSquat/HBoxleftRight" unique_id=129399806]
+position = Vector2(141, 53)
+texture_normal = ExtResource("3_s3714")
+shape = SubResource("CircleShape2D_ppxiu")
+action = "ui_right"
+
+[node name="VBoxRunJump" type="VBoxContainer" parent="." unique_id=1267727364]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxJump" type="HBoxContainer" parent="VBoxRunJump" unique_id=1131902969]
+layout_mode = 2
+
+[node name="BtnJump" type="TouchScreenButton" parent="VBoxRunJump/HBoxJump" unique_id=1419498089]
+position = Vector2(-164, -64)
+texture_normal = ExtResource("6_gbkng")
+shape = SubResource("CircleShape2D_ui5ya")
+action = "ui_accept"
+
+[node name="HBoxRun" type="HBoxContainer" parent="VBoxRunJump" unique_id=697432867]
+layout_mode = 2
+
+[node name="btnRun" type="TouchScreenButton" parent="VBoxRunJump/HBoxRun" unique_id=929361917]
+position = Vector2(-76, -149)
+texture_normal = ExtResource("5_2b8le")
+shape = SubResource("CircleShape2D_svdgb")
+action = "run"
