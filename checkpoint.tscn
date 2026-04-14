@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0wxb63risudj" path="res://Checkpoint.cs" id="1_r6hke"]
 [ext_resource type="Texture2D" uid="uid://dvf4bq00e6cby" path="res://images/flags.png" id="2_r6hke"]
+[ext_resource type="AudioStream" uid="uid://r76f4t74i1fd" path="res://audios/checkout.mp3" id="3_tnhlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnhlw"]
 size = Vector2(160.5, 226)
@@ -93,5 +94,8 @@ scale = Vector2(1.8859375, 1.79771)
 sprite_frames = SubResource("SpriteFrames_r6hke")
 animation = &"deactivated"
 frame_progress = 0.3630519
+
+[node name="CheckpointAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1828185800]
+stream = ExtResource("3_tnhlw")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

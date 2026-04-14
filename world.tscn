@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dtbby6wf4p8l8" path="res://images/flag_end.png" id="15_mc2jv"]
 [ext_resource type="PackedScene" uid="uid://qs6gk42tkr7p" path="res://checkpoint.tscn" id="16_2u3nc"]
 [ext_resource type="AudioStream" uid="uid://blmlucfakvsr6" path="res://audios/victory.mp3" id="16_bo7i5"]
+[ext_resource type="AudioStream" uid="uid://ixiogyf6rmmx" path="res://audios/end_effect.mp3" id="17_bh8nc"]
 [ext_resource type="PackedScene" uid="uid://b3686ngo3itvd" path="res://judite.tscn" id="19_26xuy"]
 [ext_resource type="PackedScene" uid="uid://cgjeaygmyoc40" path="res://mouse.tscn" id="19_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://copfxjqt18kbi" path="res://amber.tscn" id="21_bc84e"]
@@ -4892,6 +4893,9 @@ animation = &"activated"
 [node name="FinalBarrerCollision" type="CollisionShape2D" parent="FinalBarrier" unique_id=1528832074]
 position = Vector2(26, 0)
 shape = SubResource("RectangleShape2D_0oi55")
+
+[node name="FinalBarrerAudioPlayer" type="AudioStreamPlayer" parent="FinalBarrier" unique_id=278235749]
+stream = ExtResource("17_bh8nc")
 
 [node name="topBarrier" type="StaticBody2D" parent="." unique_id=1283752428]
 position = Vector2(62, 30)
