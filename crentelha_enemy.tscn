@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cuvjrq8u8ybqd" path="res://inimigo.png" id="2_jq2uo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otwa2"]
-size = Vector2(84, 177.75)
+size = Vector2(37, 111.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wx08"]
 atlas = ExtResource("2_jq2uo")
@@ -52,7 +52,7 @@ position = Vector2(-1, 1)
 script = ExtResource("1_xvegb")
 
 [node name="CrentelhaEnemyCollision" type="CollisionShape2D" parent="." unique_id=316373342 groups=["enemies"]]
-position = Vector2(74, 156.875)
+position = Vector2(71.5, 189.875)
 shape = SubResource("RectangleShape2D_otwa2")
 
 [node name="CrentelhaEnemyAnimation" type="AnimatedSprite2D" parent="." unique_id=1675836665]

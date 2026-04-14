@@ -94,6 +94,8 @@ public override void _PhysicsProcess(double delta)
     {
         _eggs.Visible = true;
 
+        BlinkEggs();
+
         foreach (var egg in _eggs.GetChildren())
         {
             foreach (var area in egg.GetChildren())
@@ -110,4 +112,18 @@ public override void _PhysicsProcess(double delta)
 
         _isEggsShown = true;
     }
+
+    public void BlinkEggs()
+{
+    // Pega a referência do nó filho
+    var targetNode = GetNode<Node2D>("Eggs");
+
+    Tween tween = CreateTween();
+    for (int i = 0; i < 3; i++)
+    {
+        // Agora usamos 'targetNode' em vez de 'this'
+        tween.TweenProperty(targetNode, "modulate:a", 0.0f, 0.5f);
+        tween.TweenProperty(targetNode, "modulate:a", 1.0f, 0.5f);
+    }
+}
 }

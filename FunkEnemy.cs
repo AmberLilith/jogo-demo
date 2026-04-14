@@ -17,10 +17,12 @@ public partial class FunkEnemy : CharacterBody2D
     [Export] public float AtackDistance = 500.0f;
     [Export] public float FireDistance = 400.0f;
     public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-    private AnimatedSprite2D _animacao;
+    private AnimatedSprite2D _animation;
     private Node2D _Player;
     private Timer _timerAtirar;
     private AudioStreamPlayer _audioPlayer;
+
+    private CollisionShape2D _collision;
 
     private void Fire()
     {
@@ -36,7 +38,7 @@ public partial class FunkEnemy : CharacterBody2D
 
             // ✅ Direção horizontal fixa baseada em para onde o inimigo está virado
             // FlipH = true significa que está virado para a DIREITA
-            Vector2 direcao = _animacao.FlipH ? Vector2.Right : Vector2.Left;
+            Vector2 direcao = _animation.FlipH ? Vector2.Right : Vector2.Left;
             newBullet.Direction = direcao;
 
             GetTree().Root.AddChild(newBullet);
@@ -49,25 +51,26 @@ public partial class FunkEnemy : CharacterBody2D
 
     public override void _Ready()
     {
-        _animacao = GetNode<AnimatedSprite2D>("FunkEnemyAnimation");
+        _animation = GetNode<AnimatedSprite2D>("FunkEnemyAnimation");
         _gunBarrel = GetNode<Marker2D>("Marker2D");
         _Player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
         _audioPlayer = GetNode<AudioStreamPlayer>("FunkEnemyAudioPlayer");
+        _collision = GetNode<CollisionShape2D>("FunkEnemyCollision");
 
         // ✅ Remove o Timer — não precisamos mais dele
         // Conecta o sinal de fim de animação
-        _animacao.AnimationFinished += OnAnimationFinished;
+        _animation.AnimationFinished += OnAnimationFinished;
 
-        _animacao.Play("idle");
+        _animation.Play("idle");
     }
 
     // ✅ Dispara a bala quando a animação "fire" termina um ciclo
     private void OnAnimationFinished()
     {
-        if (_animacao.Animation == "fire")
+        if (_animation.Animation == "fire")
         {
             Fire();
-            _animacao.Play("fire"); // Reinicia a animação para o próximo ciclo
+            _animation.Play("fire"); // Reinicia a animação para o próximo ciclo
         }
     }
 
@@ -86,27 +89,27 @@ public partial class FunkEnemy : CharacterBody2D
             if (distancia < FireDistance)
             {
                 // ✅ Só inicia "fire" se ainda não estiver tocando
-                if (_animacao.Animation != "fire")
+                if (_animation.Animation != "fire")
                 {
-                    _animacao.SpeedScale = 0.5f;
-                    _animacao.Play("fire");
+                    _animation.SpeedScale = 0.5f;
+                    _animation.Play("fire");
                 }
             }
             else if (distancia < AtackDistance)
             {
-                if (_animacao.Animation != "draw")
+                if (_animation.Animation != "draw")
                 {
-                    _animacao.SpeedScale = 1.0f;
-                    _animacao.Play("draw");
+                    _animation.SpeedScale = 1.0f;
+                    _animation.Play("draw");
                 }
             }
             else
             {
-                _animacao.SpeedScale = 0.2f;
-                _animacao.Play("idle");
+                _animation.SpeedScale = 0.2f;
+                _animation.Play("idle");
             }
 
-            _animacao.FlipH = _Player.GlobalPosition.X > this.GlobalPosition.X;
+            this.Scale = new Vector2(1, 1);
         }
     }
 }

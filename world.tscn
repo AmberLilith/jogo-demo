@@ -4742,6 +4742,30 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57gmc"]
 size = Vector2(17957, 24)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qktwf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.60784316, 0.40392157, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bh8nc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.42352942, 0.2784314, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [node name="World" type="Node2D" unique_id=2016917093]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=405960218]
@@ -4824,8 +4848,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainerLifes" type="MarginContainer" parent="HUD/HBoxContainer" unique_id=1403407259]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 0
 
 [node name="Lifes" type="Label" parent="HUD/HBoxContainer/MarginContainerLifes" unique_id=1300120350]
 layout_mode = 2
@@ -4905,23 +4929,26 @@ mouse_filter = 2
 
 [node name="MessageLabel" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=894434757]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 45
 text = "GAME OVER"
 horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=1132344618]
 process_mode = 3
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_qktwf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bh8nc")
 text = "Tentar Novamente"
 
 [node name="Node2D" parent="." unique_id=1713484407 instance=ExtResource("15_hiqwa")]
 position = Vector2(2624, 503)
 
 [node name="Checkpoint" parent="." unique_id=685006866 instance=ExtResource("16_2u3nc")]
-position = Vector2(4417, 482)
+position = Vector2(3613, 466)
 
 [node name="FunkEnemy" parent="." unique_id=906548472 instance=ExtResource("12_wjb0r")]
-position = Vector2(3933, 470)
+position = Vector2(4229, 455)
 
 [node name="Judite" parent="." unique_id=1502595574 instance=ExtResource("19_26xuy")]
 position = Vector2(1331, 552)
