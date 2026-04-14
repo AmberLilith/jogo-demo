@@ -19,7 +19,7 @@ private async void OnBodyEntered(Node2D body)
 		_audioPlayer.Play();
 
 		// 1. Pegamos a Label
-		Label scoreLabel = GetTree().Root.GetNode<Label>("World/HUD/HBoxContainer/Score");
+		Label scoreLabel = GetTree().Root.GetNode<Label>("World/HUD/HBoxContainer/MarginContainerScore/Score");
 
 		// 2. A MÁGICA: Pegamos a posição da Label na TELA (Canvas)
 		// e convertemos para a posição exata onde ela parece estar no MUNDO agora.

@@ -62,8 +62,8 @@ public partial class GameManager : Node
 
     private void UpdateHUD()
     {
-        var scoreLabel = GetTree().Root.GetNodeOrNull<Label>("World/HUD/HBoxContainer/Score");
-        var livesLabel = GetTree().Root.GetNodeOrNull<Label>("World/HUD/HBoxContainer/Lifes");
+        var scoreLabel = GetTree().Root.GetNodeOrNull<Label>("World/HUD/HBoxContainer/MarginContainerScore/Score");
+        var livesLabel = GetTree().Root.GetNodeOrNull<Label>("World/HUD/HBoxContainer/MarginContainerLifes/Lifes");
 
         if (scoreLabel != null)
             scoreLabel.Text = $"Ovos de Bebezinhas: {Eggs}";
@@ -73,7 +73,7 @@ public partial class GameManager : Node
 
     public void AddLifes(int value)
     {
-        var lifeLabel = GetTree().Root.GetNodeOrNull<Label>("World/HUD/HBoxContainer/Lifes");
+        var lifeLabel = GetTree().Root.GetNodeOrNull<Label>("World/HUD/HBoxContainer/MarginContainerLifes/Lifes");
         CurrentLifes += value;
         lifeLabel.Text = $"Vidas {CurrentLifes}";
 

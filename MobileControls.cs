@@ -28,5 +28,22 @@ public partial class MobileControls : CanvasLayer
             QueueFree();
             return;
         }
+         // ✅ Esconde na tela inicial
+        GetTree().NodeAdded += OnNodeAdded;
+        AtualizarVisibilidade();
+    }
+
+    private void OnNodeAdded(Node node)
+    {
+        AtualizarVisibilidade();
+    }
+
+    private void AtualizarVisibilidade()
+    {
+        // ✅ Só aparece quando a cena atual for o World
+        var cenaAtual = GetTree().CurrentScene;
+        if (cenaAtual == null) return;
+
+        Visible = cenaAtual.SceneFilePath.Contains("world");
     }
 }

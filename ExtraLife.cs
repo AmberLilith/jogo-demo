@@ -24,7 +24,7 @@ private async void OnBodyEntered(Node2D body)
 		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
 
 		// 1. Pegamos a Label
-		Label lifesLabel = GetParent().GetNode<Label>("../HUD/HBoxContainer/Lifes");
+		Label lifesLabel = GetParent().GetNode<Label>("../HUD/HBoxContainer/MarginContainerLifes/Lifes");
 
 		// 2. A MÁGICA: Pegamos a posição da Label na TELA (Canvas)
 		// e convertemos para a posição exata onde ela parece estar no MUNDO agora.

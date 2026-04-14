@@ -4822,12 +4822,20 @@ size_flags_vertical = 0
 theme_override_constants/separation = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="Lifes" type="Label" parent="HUD/HBoxContainer" unique_id=1300120350]
+[node name="MarginContainerLifes" type="MarginContainer" parent="HUD/HBoxContainer" unique_id=1403407259]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="Lifes" type="Label" parent="HUD/HBoxContainer/MarginContainerLifes" unique_id=1300120350]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Vidas"
 
-[node name="Score" type="Label" parent="HUD/HBoxContainer" unique_id=1060394282]
+[node name="MarginContainerScore" type="MarginContainer" parent="HUD/HBoxContainer" unique_id=406289053]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="HUD/HBoxContainer/MarginContainerScore" unique_id=1060394282]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

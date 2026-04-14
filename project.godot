@@ -11,13 +11,19 @@ config_version=5
 [application]
 
 config/name="MeuPrimeiroJogo"
-run/main_scene="uid://b1wllxx8psq74"
+run/main_scene="uid://cdonjurc8i00x"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://cb6itdgbucys8"
+MobileControls="*uid://q0pteqavqdtb"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -36,6 +42,10 @@ squat={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -43,3 +53,4 @@ squat={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true
