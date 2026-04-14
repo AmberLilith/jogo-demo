@@ -36,6 +36,7 @@ public abstract partial class Chiken : Area2D
 {
     if (body is Player player)
     {
+        collisonNode.SetDeferred("disabled", true);
         SoundNode.Play();
 
         if (AnimationNode.SpriteFrames.HasAnimation("run"))
@@ -76,13 +77,11 @@ public override void _PhysicsProcess(double delta)
 }
     private async void Collect()
     {
-        // 1. Desativa a colisão imediatamente para o player não interagir mais
-        collisonNode.SetDeferred("disabled", true);
         
         // 2. Torna o visual invisível (opcional, caso queira que ela suma da tela mas espere o tempo)
         // AnimationNode.Visible = false;
 
-        // 3. Cria um timer de 10 segundos e aguarda o sinal de término (timeout)
+        // 3. Cria um timer de 60 segundos e aguarda o sinal de término (timeout)
         // O await permite que o código "pare" aqui sem travar o resto do jogo
         await ToSignal(GetTree().CreateTimer(60.0f), SceneTreeTimer.SignalName.Timeout);
 
@@ -91,7 +90,7 @@ public override void _PhysicsProcess(double delta)
     }
 
     private void showEggs()
-    {
+    {        
         _eggs.Visible = true;
 
         BlinkEggs();

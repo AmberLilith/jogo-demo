@@ -9,6 +9,7 @@ public partial class Mouse : CharacterBody2D
     private VisibleOnScreenNotifier2D _notifier;
     private Node2D _Player;
     public Vector2 Direction = Vector2.Zero;
+    [Export] public float Gravity = 900f;
 
     [Export] public float Speed = -200.0f; // Negativo para ir para a esquerda
     [Export] public float AtackDistance = 400.0f;
@@ -52,27 +53,37 @@ public partial class Mouse : CharacterBody2D
     }
 
     public override void _PhysicsProcess(double delta)
+{
+    if (_Player == null) return;
+
+    Vector2 velocity = Velocity;
+
+    float distance = GlobalPosition.DistanceTo(_Player.GlobalPosition);
+
+    // 👇 GRAVIDADE (ESSENCIAL)
+    if (!IsOnFloor())
     {
-        if (_Player == null) return;
-
-        Vector2 velocity = Velocity;
-        float distance = GlobalPosition.DistanceTo(_Player.GlobalPosition);
-
-        if (distance < AtackDistance)
-        {
-            // Inicia o movimento horizontal apenas se estiver dentro da distância
-            velocity.X = Speed;
-
-            if (_animation.Animation != "run")
-            {
-                _animation.Play("run");
-                _audioPlayer.Play();
-            }
-        }
-
-        Velocity = velocity;
-        MoveAndSlide();
+        velocity.Y += Gravity * (float)delta;
     }
+    else
+    {
+        velocity.Y = 0; // mantém colado no chão
+    }
+
+    if (distance < AtackDistance)
+    {
+        velocity.X = Speed;
+
+        if (_animation.Animation != "run")
+        {
+            _animation.Play("run");
+            _audioPlayer.Play();
+        }
+    }
+
+    Velocity = velocity;
+    MoveAndSlide();
+}
 
 
 }

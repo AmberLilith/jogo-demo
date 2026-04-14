@@ -4740,7 +4740,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57gmc"]
-size = Vector2(17957, 24)
+size = Vector2(18049, 24)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qktwf"]
 content_margin_left = 4.0
@@ -4774,8 +4774,8 @@ repeat_size = Vector2(1050, 0)
 repeat_times = 3
 
 [node name="Fundo" type="Sprite2D" parent="Parallax2D" unique_id=1085124026]
-position = Vector2(589, 329)
-scale = Vector2(0.21828571, 0.18399997)
+position = Vector2(589, 325.00003)
+scale = Vector2(0.21828571, 0.18171427)
 texture = ExtResource("1_2o6r5")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=563457774 groups=["Player"]]
@@ -4897,7 +4897,7 @@ shape = SubResource("RectangleShape2D_0oi55")
 position = Vector2(62, 30)
 
 [node name="TopBarrerCollision" type="CollisionShape2D" parent="topBarrier" unique_id=778133160]
-position = Vector2(8974.5, 2)
+position = Vector2(8928.5, 2)
 shape = SubResource("RectangleShape2D_57gmc")
 
 [node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=871538760]
@@ -5000,3 +5000,29 @@ position = Vector2(7405, 404)
 
 [node name="FallingBlock3" parent="." unique_id=1620345445 instance=ExtResource("31_bh8nc")]
 position = Vector2(7605, 474)
+
+[node name="DeathZone2" type="Area2D" parent="." unique_id=2069801318]
+position = Vector2(7325, 610)
+script = ExtResource("13_mc2jv")
+
+[node name="DeathZoneCollision" type="CollisionShape2D" parent="DeathZone2" unique_id=393461158]
+position = Vector2(13, -1)
+shape = SubResource("RectangleShape2D_5g5eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="DeathZone2" unique_id=281011452]
+position = Vector2(12.000019, 3.8146973e-06)
+scale = Vector2(0.8525472, 0.5044247)
+texture = ExtResource("12_ikiii")
+
+[node name="DeathZone3" type="Area2D" parent="." unique_id=899709945]
+position = Vector2(7568, 610)
+script = ExtResource("13_mc2jv")
+
+[node name="DeathZoneCollision" type="CollisionShape2D" parent="DeathZone3" unique_id=56724777]
+position = Vector2(13, -1)
+shape = SubResource("RectangleShape2D_5g5eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="DeathZone3" unique_id=579934606]
+position = Vector2(12.000019, 3.8146973e-06)
+scale = Vector2(0.8525472, 0.5044247)
+texture = ExtResource("12_ikiii")
