@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cdonjurc8i00x"]
+
+[ext_resource type="Script" uid="uid://b8eqeuc0uckl4" path="res://StartScreen.cs" id="1_ncxyx"]
+[ext_resource type="Texture2D" uid="uid://c2qkj7dibe02h" path="res://fundo.jpg" id="2_pevhg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pevhg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.60784316, 0.40392157, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afy8x"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.42404982, 0.27667204, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="StartScreen" type="Control" unique_id=1062710609]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ncxyx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=329752735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pevhg")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1100627106]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -51.0
+offset_right = 69.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer" unique_id=208851217]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Jogo do Bebezola"
+
+[node name="BtnPlay" type="Button" parent="TextureRect/VBoxContainer" unique_id=1018843679]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.60671216, 0.40421894, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pevhg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afy8x")
+text = "JOGAR"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=218453680]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 3.0
+offset_right = -2.0
+offset_bottom = 27.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="MarginContainerLabelSound" type="MarginContainer" parent="TextureRect/HBoxContainer" unique_id=1684365838]
+layout_mode = 2
+
+[node name="LabelSound" type="Label" parent="TextureRect/HBoxContainer/MarginContainerLabelSound" unique_id=1815430396]
+layout_mode = 2
+text = "Som"
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer" unique_id=1433070840]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+
+[node name="BtnSound" type="CheckButton" parent="TextureRect/HBoxContainer/MarginContainer" unique_id=738013725]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=1640016241]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -143.5
+offset_top = -62.0
+offset_right = 150.5
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="Labeltip" type="Label" parent="TextureRect/MarginContainer" unique_id=1456721960]
+layout_mode = 2
+text = "precione qualquer tecla para começar"

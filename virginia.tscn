@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://bwuaotorhsu0a"]
+
+[ext_resource type="Script" uid="uid://ctk31ywtaf6ub" path="res://Virginia.cs" id="1_cgxy3"]
+[ext_resource type="Texture2D" uid="uid://b0u4clptsf08p" path="res://images/Virginia/VirginiaNest.png" id="2_4wypx"]
+[ext_resource type="AudioStream" uid="uid://bef02olo2odl5" path="res://audios/virginiaSound.mp3" id="3_4wypx"]
+[ext_resource type="Texture2D" uid="uid://oi0xpk6ddtmj" path="res://images/Virginia/ChatGPT Image 8 de abr. de 2026, 21_11_48.png" id="3_34f7w"]
+[ext_resource type="PackedScene" uid="uid://dx6li6hlv4uw0" path="res://egg.tscn" id="3_l6gld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj8m4"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(0, 1059, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pklqk"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(0, 706, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhgln"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(384, 706, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2r6s"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(768, 706, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t13r"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(1152, 706, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y31m"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(0, 353, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts2pf"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(384, 353, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpmvp"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(768, 353, 384, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bpgn"]
+atlas = ExtResource("3_34f7w")
+region = Rect2(1152, 353, 384, 353)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bklhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj8m4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pklqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhgln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2r6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t13r")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y31m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts2pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpmvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bpgn")
+}],
+"loop": true,
+"name": &"scratch",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
+radius = 208.51195
+
+[node name="Virginia" type="Area2D" unique_id=1502595574 node_paths=PackedStringArray("collisonNode", "AnimationNode", "SoundNode", "EggsNode")]
+script = ExtResource("1_cgxy3")
+collisonNode = NodePath("VirginiaCollsion")
+AnimationNode = NodePath("VirginiaAnimation")
+SoundNode = NodePath("VirginiaAudioPlayer")
+EggsNode = NodePath("Eggs")
+
+[node name="VirginiaNest" type="Sprite2D" parent="." unique_id=102947728]
+position = Vector2(-1, 12)
+scale = Vector2(0.22499998, 0.19444445)
+texture = ExtResource("2_4wypx")
+
+[node name="VirginiaAnimation" type="AnimatedSprite2D" parent="." unique_id=864640345]
+scale = Vector2(0.22164348, 0.1827589)
+sprite_frames = SubResource("SpriteFrames_bklhk")
+animation = &"idle"
+
+[node name="VirginiaCollsion" type="CollisionShape2D" parent="." unique_id=912152848]
+position = Vector2(0, -2)
+scale = Vector2(0.18287037, 0.1388889)
+shape = SubResource("CircleShape2D_4wss7")
+
+[node name="VirginiaAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1554240404]
+stream = ExtResource("3_4wypx")
+
+[node name="Eggs" type="Node2D" parent="." unique_id=484169039]
+visible = false
+
+[node name="Egg" parent="Eggs" unique_id=1053432599 instance=ExtResource("3_l6gld")]
+position = Vector2(1, 7)
+
+[node name="Egg3" parent="Eggs" unique_id=350853124 instance=ExtResource("3_l6gld")]
+position = Vector2(-11, 6)
+
+[node name="Egg2" parent="Eggs" unique_id=22318236 instance=ExtResource("3_l6gld")]
+position = Vector2(13, 6)
+
+[node name="Egg4" parent="Eggs" unique_id=923158960 instance=ExtResource("3_l6gld")]
+position = Vector2(24, 0)
+
+[node name="Egg5" parent="Eggs" unique_id=1978139022 instance=ExtResource("3_l6gld")]
+position = Vector2(-22, -1)

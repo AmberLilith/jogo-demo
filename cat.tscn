@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cbmb1mdatf6p1"]
+
+[ext_resource type="Script" uid="uid://c3iwjdpkwop1r" path="res://Cat.cs" id="1_52fj1"]
+[ext_resource type="Texture2D" uid="uid://bg656xcmwjki8" path="res://images/cat.png" id="2_6fl1u"]
+[ext_resource type="AudioStream" uid="uid://dhc28t8bk2n0j" path="res://audios/cat.mp3" id="3_w46py"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w46py"]
+atlas = ExtResource("2_6fl1u")
+region = Rect2(0, 0, 225, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u0g4"]
+atlas = ExtResource("2_6fl1u")
+region = Rect2(0, 121, 225, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hdoq"]
+atlas = ExtResource("2_6fl1u")
+region = Rect2(0, 242, 225, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v165"]
+atlas = ExtResource("2_6fl1u")
+region = Rect2(0, 363, 225, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyw7o"]
+atlas = ExtResource("2_6fl1u")
+region = Rect2(0, 484, 225, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rjga"]
+atlas = ExtResource("2_6fl1u")
+region = Rect2(0, 605, 225, 121)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_giwe8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w46py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u0g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hdoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v165")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyw7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rjga")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w46py"]
+size = Vector2(76, 42)
+
+[node name="Cat" type="CharacterBody2D" unique_id=2028126915 groups=["enemies"]]
+script = ExtResource("1_52fj1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1656134030]
+scale = Vector2(0.5044444, 0.5165289)
+sprite_frames = SubResource("SpriteFrames_giwe8")
+animation = &"walk"
+frame_progress = 0.55432427
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1189622214]
+position = Vector2(20, 0)
+target_position = Vector2(0, 40)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=418037253]
+position = Vector2(-20, 0)
+target_position = Vector2(0, 40)
+
+[node name="CatAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1369984159]
+stream = ExtResource("3_w46py")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=580173377]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_w46py")

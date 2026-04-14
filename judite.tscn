@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://b3686ngo3itvd"]
+
+[ext_resource type="Script" uid="uid://bgoavdfx812pp" path="res://Judite.cs" id="1_sh2v4"]
+[ext_resource type="Texture2D" uid="uid://bu8l0s3yxlfpp" path="res://images/Judite/JuditeNest.png" id="2_kxsch"]
+[ext_resource type="AudioStream" uid="uid://bs170spt6frvh" path="res://audios/juditeSound.mp3" id="3_akng0"]
+[ext_resource type="Texture2D" uid="uid://bkvgrruahpvt6" path="res://images/Judite/ChatGPT Image 8 de abr. de 2026, 21_13_26.png" id="3_kxsch"]
+[ext_resource type="PackedScene" uid="uid://dx6li6hlv4uw0" path="res://egg.tscn" id="3_n4yp5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ix5v"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(0, 981, 446, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxsch"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(0, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdarw"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(384, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6qvb"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(768, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pbp4"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(1152, 682, 384, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3snck"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(0, 327, 384, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb8r2"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(384, 327, 384, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31d10"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(768, 327, 384, 327)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p1xv"]
+atlas = ExtResource("3_kxsch")
+region = Rect2(1152, 327, 384, 327)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxsch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ix5v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxsch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdarw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6qvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pbp4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3snck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb8r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31d10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p1xv")
+}],
+"loop": true,
+"name": &"scratch",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wss7"]
+radius = 177.3415
+
+[node name="Judite" type="Area2D" unique_id=1502595574 node_paths=PackedStringArray("collisonNode", "AnimationNode", "SoundNode", "EggsNode")]
+script = ExtResource("1_sh2v4")
+collisonNode = NodePath("JuditeCollision")
+AnimationNode = NodePath("JuditeAnimation")
+SoundNode = NodePath("JuditeAudioPlayer")
+EggsNode = NodePath("Eggs")
+
+[node name="JuditeNest" type="Sprite2D" parent="." unique_id=193302095]
+position = Vector2(-1.4999981, 8.575194)
+scale = Vector2(0.2275, 0.19360894)
+texture = ExtResource("2_kxsch")
+
+[node name="JuditeAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=474346163]
+stream = ExtResource("3_akng0")
+
+[node name="JuditeAnimation" type="AnimatedSprite2D" parent="." unique_id=814320822]
+position = Vector2(23.133411, 4.5729437)
+scale = Vector2(0.30881885, 0.25337648)
+sprite_frames = SubResource("SpriteFrames_kxsch")
+animation = &"idle"
+
+[node name="JuditeCollision" type="CollisionShape2D" parent="." unique_id=912152848]
+position = Vector2(-0.9999999, -8)
+scale = Vector2(0.18287037, 0.1388889)
+shape = SubResource("CircleShape2D_4wss7")
+
+[node name="Eggs" type="Node2D" parent="." unique_id=569697233]
+visible = false
+position = Vector2(62, 1)
+
+[node name="Egg" parent="Eggs" unique_id=1053432599 instance=ExtResource("3_n4yp5")]
+position = Vector2(-77, -6)
+
+[node name="Egg2" parent="Eggs" unique_id=1103494359 instance=ExtResource("3_n4yp5")]
+position = Vector2(-63, -3)
+
+[node name="Egg3" parent="Eggs" unique_id=1429655243 instance=ExtResource("3_n4yp5")]
+position = Vector2(-50, -5)

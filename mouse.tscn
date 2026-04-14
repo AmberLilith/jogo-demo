@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cgjeaygmyoc40"]
+
+[ext_resource type="Script" uid="uid://db7s74rho1745" path="res://Mouse.cs" id="1_1jbr0"]
+[ext_resource type="Texture2D" uid="uid://bv5u7dndlpsol" path="res://images/rato.png" id="2_18cwl"]
+[ext_resource type="AudioStream" uid="uid://2ws64jspi1m0" path="res://audios/mouse_noise.mp3" id="3_86rlw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j7kw"]
+size = Vector2(57, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s167"]
+atlas = ExtResource("2_18cwl")
+region = Rect2(830, 0, 166, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf125"]
+atlas = ExtResource("2_18cwl")
+region = Rect2(830, 0, 166, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cjxx"]
+atlas = ExtResource("2_18cwl")
+region = Rect2(664, 0, 166, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blhpi"]
+atlas = ExtResource("2_18cwl")
+region = Rect2(498, 0, 166, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t416m"]
+atlas = ExtResource("2_18cwl")
+region = Rect2(332, 0, 166, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkjwk"]
+atlas = ExtResource("2_18cwl")
+region = Rect2(166, 0, 166, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lciv0"]
+atlas = ExtResource("2_18cwl")
+region = Rect2(0, 0, 166, 167)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ca18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s167")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf125")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cjxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blhpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t416m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkjwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lciv0")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Mouse" type="CharacterBody2D" unique_id=365002231 groups=["enemies"]]
+script = ExtResource("1_1jbr0")
+
+[node name="MouseCollision" type="CollisionShape2D" parent="." unique_id=1753206591]
+shape = SubResource("RectangleShape2D_6j7kw")
+
+[node name="MouseAnimation" type="AnimatedSprite2D" parent="." unique_id=260122015]
+position = Vector2(19, -27)
+scale = Vector2(0.62650603, 0.50224555)
+sprite_frames = SubResource("SpriteFrames_0ca18")
+animation = &"run"
+frame_progress = 0.24266562
+
+[node name="MouseAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=567059793]
+stream = ExtResource("3_86rlw")
