@@ -39,7 +39,8 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="BtnSquat" type="TouchScreenButton" parent="VBoxLeftRightSquat/HBoxSquat" unique_id=475445663]
-position = Vector2(79, 151)
+position = Vector2(96, 102)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("4_wlcjf")
 shape = SubResource("CircleShape2D_b286x")
 action = "squat"
@@ -48,14 +49,16 @@ action = "squat"
 layout_mode = 2
 
 [node name="BtnLeft" type="TouchScreenButton" parent="VBoxLeftRightSquat/HBoxleftRight" unique_id=1924361963]
-position = Vector2(17, 68)
+position = Vector2(6, -3)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("2_ui5ya")
 texture_pressed = SubResource("ImageTexture_kkojo")
 shape = SubResource("CircleShape2D_kkojo")
 action = "ui_left"
 
 [node name="BtnRight" type="TouchScreenButton" parent="VBoxLeftRightSquat/HBoxleftRight" unique_id=129399806]
-position = Vector2(141, 53)
+position = Vector2(186, -9)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("3_s3714")
 shape = SubResource("CircleShape2D_ppxiu")
 action = "ui_right"
@@ -75,7 +78,8 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="BtnJump" type="TouchScreenButton" parent="VBoxRunJump/HBoxJump" unique_id=1419498089]
-position = Vector2(-164, -64)
+position = Vector2(-224, -111)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("6_gbkng")
 shape = SubResource("CircleShape2D_ui5ya")
 action = "ui_accept"
@@ -84,7 +88,8 @@ action = "ui_accept"
 layout_mode = 2
 
 [node name="btnRun" type="TouchScreenButton" parent="VBoxRunJump/HBoxRun" unique_id=929361917]
-position = Vector2(-76, -149)
+position = Vector2(-112, -205)
+scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("5_2b8le")
 shape = SubResource("CircleShape2D_svdgb")
 action = "run"
