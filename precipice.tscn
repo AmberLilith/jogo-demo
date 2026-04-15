@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cppprk8tqttqq"]
+
+[ext_resource type="Script" uid="uid://b102wxmmtgvem" path="res://Precipice.cs" id="1_r8s7e"]
+[ext_resource type="Texture2D" uid="uid://d38lw3p40btf1" path="res://images/animation-water.png" id="1_sqcuv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8s7e"]
+atlas = ExtResource("1_sqcuv")
+region = Rect2(0, 0, 533, 298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74370"]
+atlas = ExtResource("1_sqcuv")
+region = Rect2(0, 298, 533, 298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rqet"]
+atlas = ExtResource("1_sqcuv")
+region = Rect2(533, 298, 533, 298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m25j8"]
+atlas = ExtResource("1_sqcuv")
+region = Rect2(533, 0, 533, 298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypx67"]
+atlas = ExtResource("1_sqcuv")
+region = Rect2(1066, 0, 533, 298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg8ch"]
+atlas = ExtResource("1_sqcuv")
+region = Rect2(1066, 298, 533, 298)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy2an"]
+atlas = ExtResource("1_sqcuv")
+region = Rect2(0, 596, 533, 298)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2caxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8s7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74370")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rqet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m25j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypx67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg8ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy2an")
+}],
+"loop": true,
+"name": &"water",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2yq4"]
+size = Vector2(386.5, 53)
+
+[node name="Precipice" type="Area2D" unique_id=1197251420]
+script = ExtResource("1_r8s7e")
+
+[node name="DeathZoneAnimation" type="AnimatedSprite2D" parent="." unique_id=2020746736]
+position = Vector2(18.187508, 33.75)
+scale = Vector2(0.76852727, 0.36409393)
+sprite_frames = SubResource("SpriteFrames_2caxc")
+animation = &"water"
+frame_progress = 0.15484299
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1190548800]
+shape = SubResource("RectangleShape2D_e2yq4")

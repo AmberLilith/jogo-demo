@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3686ngo3itvd" path="res://judite.tscn" id="19_26xuy"]
 [ext_resource type="PackedScene" uid="uid://cgjeaygmyoc40" path="res://mouse.tscn" id="19_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://copfxjqt18kbi" path="res://amber.tscn" id="21_bc84e"]
-[ext_resource type="PackedScene" uid="uid://dd2a88f5og6v" path="res://death_zone.tscn" id="22_wukud"]
+[ext_resource type="PackedScene" uid="uid://cppprk8tqttqq" path="res://precipice.tscn" id="22_wukud"]
 [ext_resource type="PackedScene" uid="uid://dukbrt2yk4cff" path="res://finish_game.tscn" id="23_il2jm"]
 [ext_resource type="PackedScene" uid="uid://bybhlctvyamyf" path="res://player.tscn" id="23_wjb0r"]
 [ext_resource type="PackedScene" uid="uid://b3us1jy74a5hg" path="res://fire_wheel.tscn" id="26_bo7i5"]
@@ -4625,7 +4625,6 @@ z_index = 2
 position = Vector2(3613, 466)
 
 [node name="FunkEnemy" parent="." unique_id=906548472 instance=ExtResource("12_wjb0r")]
-z_index = 2
 position = Vector2(4229, 455)
 
 [node name="Judite" parent="." unique_id=1502595574 instance=ExtResource("19_26xuy")]
@@ -4665,14 +4664,7 @@ position = Vector2(682, 313)
 position = Vector2(601, 325)
 
 [node name="StoneBall" parent="." unique_id=304317305 instance=ExtResource("28_o3ebs")]
-z_index = 2
 position = Vector2(3175, 495)
-
-[node name="DeathZone2" parent="." unique_id=35478423 instance=ExtResource("22_wukud")]
-position = Vector2(7309, 610)
-
-[node name="DeathZone3" parent="." unique_id=1533228755 instance=ExtResource("22_wukud")]
-position = Vector2(7575, 610)
 
 [node name="FallingBlock" parent="." unique_id=2111478986 instance=ExtResource("31_bh8nc")]
 position = Vector2(7260, 512)
@@ -4683,8 +4675,14 @@ position = Vector2(7405, 404)
 [node name="FallingBlock3" parent="." unique_id=1620345445 instance=ExtResource("31_bh8nc")]
 position = Vector2(7605, 474)
 
-[node name="DeathZone" parent="." unique_id=1622655610 instance=ExtResource("22_wukud")]
-position = Vector2(2247, 612)
-
 [node name="Virginia2" parent="." unique_id=1126322610 instance=ExtResource("11_il2jm")]
 position = Vector2(633, 555)
+
+[node name="Precipice" parent="." unique_id=1197251420 instance=ExtResource("22_wukud")]
+position = Vector2(2247, 616)
+
+[node name="Precipice2" parent="." unique_id=441029946 instance=ExtResource("22_wukud")]
+position = Vector2(7359, 617)
+
+[node name="Precipice3" parent="." unique_id=1831489186 instance=ExtResource("22_wukud")]
+position = Vector2(7671, 618)

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class DeathZone : Area2D
+public partial class Precipice : Area2D
 {
 
 	private AnimatedSprite2D _animation;
@@ -19,10 +19,9 @@ public partial class DeathZone : Area2D
 		{
 			player.Die();
 		}
-		else
-		{
-			// If an enemy or item falls, just remove it from memory
-			body.QueueFree();
-		}
+        else if (!(body is TileMap) && !(body is TileMapLayer)) 
+    {
+        body.QueueFree();
+    }
 	}
 }

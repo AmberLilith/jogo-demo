@@ -306,7 +306,7 @@ position = Vector2(36.666664, -463.3333)
 shape = SubResource("RectangleShape2D_nvl01")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1735691057]
-position = Vector2(-3.333, -559)
+position = Vector2(-3.333, -500)
 limit_left = -1026
 limit_top = 8
 limit_right = 9998974
