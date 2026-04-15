@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdonjurc8i00x"]
 
 [ext_resource type="Script" uid="uid://b8eqeuc0uckl4" path="res://StartScreen.cs" id="1_ncxyx"]
-[ext_resource type="Texture2D" uid="uid://c2qkj7dibe02h" path="res://fundo.jpg" id="2_pevhg"]
+[ext_resource type="Texture2D" uid="uid://bpkpjbilvuc5a" path="res://images/images/fundo.jpg" id="2_pevhg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pevhg"]
 content_margin_left = 4.0

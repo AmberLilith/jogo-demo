@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dxl2pthjog7ut"]
+
+[ext_resource type="Script" uid="uid://dpm4cvns1q33x" path="res://CrentelhaEnemy.cs" id="1_xvegb"]
+[ext_resource type="Texture2D" uid="uid://4k2dljgr3xg" path="res://images/crentelha_enemy.png" id="2_4uei0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otwa2"]
+size = Vector2(37, 111.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3wcx"]
+atlas = ExtResource("2_4uei0")
+region = Rect2(870, 0, 290, 656)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv0k7"]
+atlas = ExtResource("2_4uei0")
+region = Rect2(580, 0, 290, 656)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xx3p"]
+atlas = ExtResource("2_4uei0")
+region = Rect2(290, 0, 290, 656)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy6d7"]
+atlas = ExtResource("2_4uei0")
+region = Rect2(0, 0, 290, 656)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wx08"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3wcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv0k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xx3p")
+}],
+"loop": true,
+"name": &"atack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy6d7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CrentelhaEnemy" type="CharacterBody2D" unique_id=707616710 groups=["enemies"]]
+z_index = 2
+position = Vector2(-1, 1)
+script = ExtResource("1_xvegb")
+
+[node name="CrentelhaEnemyCollision" type="CollisionShape2D" parent="." unique_id=316373342 groups=["enemies"]]
+position = Vector2(71.5, 189.875)
+shape = SubResource("RectangleShape2D_otwa2")
+
+[node name="CrentelhaEnemyAnimation" type="AnimatedSprite2D" parent="." unique_id=1675836665]
+position = Vector2(1, 55)
+scale = Vector2(0.46114284, 0.30402854)
+sprite_frames = SubResource("SpriteFrames_8wx08")
+animation = &"atack"
+frame_progress = 0.375372
+centered = false

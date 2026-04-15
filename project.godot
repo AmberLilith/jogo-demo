@@ -15,7 +15,7 @@ run/main_scene="uid://cdonjurc8i00x"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.015454977, 0.38230452, 0.99999994, 1)
 boot_splash/image="uid://c2vynurjbg850"
-config/icon="uid://oco6u60ij4a5"
+config/icon="uid://dbuh81en76v7v"
 
 [autoload]
 

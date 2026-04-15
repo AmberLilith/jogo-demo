@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqd4w3k3qhmu"
-path="res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"
+uid="uid://byotjpgvl0r2l"
+path="res://.godot/imported/inimigo.jpeg-3ded62b0632da1d9410db8f79d460876.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/judite.png"
-dest_files=["res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"]
+source_file="res://images/inimigo.jpeg"
+dest_files=["res://.godot/imported/inimigo.jpeg-3ded62b0632da1d9410db8f79d460876.ctex"]
 
 [params]
 

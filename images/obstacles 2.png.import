@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqd4w3k3qhmu"
-path="res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"
+uid="uid://bq23gkcu32jb7"
+path="res://.godot/imported/obstacles 2.png-75b565fc54f0a8d514f6461731327c7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/judite.png"
-dest_files=["res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"]
+source_file="res://images/obstacles 2.png"
+dest_files=["res://.godot/imported/obstacles 2.png-75b565fc54f0a8d514f6461731327c7b.ctex"]
 
 [params]
 

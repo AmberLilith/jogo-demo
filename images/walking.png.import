@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqd4w3k3qhmu"
-path="res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"
+uid="uid://cbj4td5u6va6v"
+path="res://.godot/imported/walking.png-cafb2074023d38daa7b9743171d26e59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/judite.png"
-dest_files=["res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"]
+source_file="res://images/walking.png"
+dest_files=["res://.godot/imported/walking.png-cafb2074023d38daa7b9743171d26e59.ctex"]
 
 [params]
 

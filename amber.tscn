@@ -5,33 +5,25 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqyai"]
 atlas = ExtResource("2_p2n0o")
-region = Rect2(1060, 0, 265, 867)
+region = Rect2(0, 0, 265, 867)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2n0o"]
 atlas = ExtResource("2_p2n0o")
-region = Rect2(1325, 0, 265, 867)
+region = Rect2(265, 0, 265, 867)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8djsl"]
 atlas = ExtResource("2_p2n0o")
-region = Rect2(0, 0, 265, 867)
+region = Rect2(530, 0, 265, 867)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdxmp"]
 atlas = ExtResource("2_p2n0o")
-region = Rect2(265, 0, 265, 867)
+region = Rect2(795, 0, 265, 867)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5sr4"]
 atlas = ExtResource("2_p2n0o")
-region = Rect2(795, 0, 265, 867)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qngy"]
-atlas = ExtResource("2_p2n0o")
-region = Rect2(530, 0, 265, 867)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6egd8"]
-atlas = ExtResource("2_p2n0o")
 region = Rect2(1060, 0, 265, 867)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ma2i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qngy"]
 atlas = ExtResource("2_p2n0o")
 region = Rect2(1325, 0, 265, 867)
 
@@ -49,12 +41,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xdxmp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5sr4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6qngy")
 }],
 "loop": true,
 "name": &"celebrate",
@@ -62,10 +48,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6egd8")
+"texture": SubResource("AtlasTexture_p5sr4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1ma2i")
+"texture": SubResource("AtlasTexture_6qngy")
 }],
 "loop": true,
 "name": &"idle",
@@ -79,5 +65,4 @@ script = ExtResource("1_aqyai")
 position = Vector2(-16, 35.662354)
 scale = Vector2(0.38671875, 0.2598901)
 sprite_frames = SubResource("SpriteFrames_lolxs")
-animation = &"idle"
-frame_progress = 0.13489988
+animation = &"celebrate"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqd4w3k3qhmu"
-path="res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"
+uid="uid://dxa4yc5kq3gti"
+path="res://.godot/imported/dying.png-fee035b56986af1f0e681b9de91c0be5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/judite.png"
-dest_files=["res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"]
+source_file="res://images/dying.png"
+dest_files=["res://.godot/imported/dying.png-fee035b56986af1f0e681b9de91c0be5.ctex"]
 
 [params]
 

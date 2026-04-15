@@ -13,28 +13,4 @@ public partial class Amber : CharacterBody2D
         _animation.Play(animationToShow);
        
     }
-
-/*     public override void _PhysicsProcess(double delta)
-    {
-        if (_player != null)
-        {
-            float distance = GlobalPosition.DistanceTo(_player.GlobalPosition);
-
-            if (distance < 400.0f)
-            {
-                if (_animation.Animation != "celebrate")
-                {
-                    _animation.Play("celebrate");                   
-                }
-            }
-            else
-            {
-                if (_animation.Animation != "idle")
-                {
-                    _animation.Play("idle");
-                }
-            }
-        }
-    }
- */
  }

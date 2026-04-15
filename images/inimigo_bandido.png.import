@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqd4w3k3qhmu"
-path="res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"
+uid="uid://boftqch1lykgg"
+path="res://.godot/imported/inimigo_bandido.png-2d891b5b536dc5f37d25af2b6a17056e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/judite.png"
-dest_files=["res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"]
+source_file="res://images/inimigo_bandido.png"
+dest_files=["res://.godot/imported/inimigo_bandido.png-2d891b5b536dc5f37d25af2b6a17056e.ctex"]
 
 [params]
 

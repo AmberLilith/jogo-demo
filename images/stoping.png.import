@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqd4w3k3qhmu"
-path="res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"
+uid="uid://dr36bk334an6k"
+path="res://.godot/imported/stoping.png-a308283878a06cc0a78921d649de145e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/judite.png"
-dest_files=["res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"]
+source_file="res://images/stoping.png"
+dest_files=["res://.godot/imported/stoping.png-a308283878a06cc0a78921d649de145e.ctex"]
 
 [params]
 

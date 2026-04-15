@@ -40,10 +40,10 @@ public partial class MobileControls : CanvasLayer
 
     private void AtualizarVisibilidade()
     {
-        // ✅ Só aparece quando a cena atual for o World
+        // ✅ Só aparece quando a cena atual for o ForestStage
         var cenaAtual = GetTree().CurrentScene;
         if (cenaAtual == null) return;
 
-        Visible = cenaAtual.SceneFilePath.Contains("world");
+        Visible = cenaAtual.SceneFilePath.Contains("ForestStage");
     }
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqd4w3k3qhmu"
-path="res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"
+uid="uid://4k2dljgr3xg"
+path="res://.godot/imported/crentelha_enemy.png-9900b9116b6c812c7b41c7d46d4233fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/judite.png"
-dest_files=["res://.godot/imported/judite.png-e9c6f46b96acada51eb07bd3705703de.ctex"]
+source_file="res://images/crentelha_enemy.png"
+dest_files=["res://.godot/imported/crentelha_enemy.png-9900b9116b6c812c7b41c7d46d4233fc.ctex"]
 
 [params]
 

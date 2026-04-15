@@ -7,48 +7,53 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnhlw"]
 size = Vector2(160.5, 226)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnhlw"]
-atlas = ExtResource("2_r6hke")
-region = Rect2(320, 0, 80, 131)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_s20m7"]
 atlas = ExtResource("2_r6hke")
-region = Rect2(400, 0, 80, 131)
+region = Rect2(160, 0, 80, 131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q25r3"]
 atlas = ExtResource("2_r6hke")
-region = Rect2(480, 0, 80, 131)
+region = Rect2(240, 0, 80, 131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4eun3"]
 atlas = ExtResource("2_r6hke")
-region = Rect2(560, 0, 80, 131)
+region = Rect2(320, 0, 80, 131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dqgm"]
 atlas = ExtResource("2_r6hke")
-region = Rect2(640, 0, 80, 131)
+region = Rect2(400, 0, 80, 131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plj7t"]
 atlas = ExtResource("2_r6hke")
-region = Rect2(720, 0, 80, 131)
+region = Rect2(480, 0, 80, 131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtr31"]
 atlas = ExtResource("2_r6hke")
-region = Rect2(800, 0, 80, 131)
+region = Rect2(560, 0, 80, 131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nni48"]
 atlas = ExtResource("2_r6hke")
-region = Rect2(880, 0, 80, 131)
+region = Rect2(640, 0, 80, 131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45wyy"]
+atlas = ExtResource("2_r6hke")
+region = Rect2(720, 0, 80, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hpic"]
+atlas = ExtResource("2_r6hke")
+region = Rect2(800, 0, 80, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m68g5"]
+atlas = ExtResource("2_r6hke")
+region = Rect2(880, 0, 80, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mcy7"]
 atlas = ExtResource("2_r6hke")
 region = Rect2(0, 0, 80, 131)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r6hke"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tnhlw")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s20m7")
 }, {
@@ -69,14 +74,23 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nni48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45wyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hpic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m68g5")
 }],
-"loop": true,
+"loop": false,
 "name": &"activated",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_45wyy")
+"texture": SubResource("AtlasTexture_8mcy7")
 }],
 "loop": true,
 "name": &"deactivated",
@@ -92,8 +106,7 @@ shape = SubResource("RectangleShape2D_tnhlw")
 [node name="CheckpointAnimation" type="AnimatedSprite2D" parent="." unique_id=1647968402]
 scale = Vector2(1.8859375, 1.79771)
 sprite_frames = SubResource("SpriteFrames_r6hke")
-animation = &"deactivated"
-frame_progress = 0.3630519
+animation = &"activated"
 
 [node name="CheckpointAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1828185800]
 stream = ExtResource("3_tnhlw")

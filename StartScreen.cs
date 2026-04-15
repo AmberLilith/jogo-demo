@@ -38,6 +38,6 @@ public partial class StartScreen : Control
 
     private void startGame()
     {
-        GetTree().ChangeSceneToFile("res://world.tscn");
+        GetTree().ChangeSceneToFile("res://forest_stage.tscn");
     }
 }
