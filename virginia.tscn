@@ -91,6 +91,7 @@ animations = [{
 radius = 208.51195
 
 [node name="Virginia" type="Area2D" unique_id=1502595574 node_paths=PackedStringArray("collisonNode", "AnimationNode", "SoundNode", "EggsNode")]
+z_index = 2
 script = ExtResource("1_cgxy3")
 collisonNode = NodePath("VirginiaCollsion")
 AnimationNode = NodePath("VirginiaAnimation")

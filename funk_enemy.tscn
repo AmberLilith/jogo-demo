@@ -98,6 +98,7 @@ animations = [{
 size = Vector2(34, 120)
 
 [node name="FunkEnemy" type="CharacterBody2D" unique_id=906548472 groups=["enemies"]]
+z_index = 2
 script = ExtResource("1_ef5aw")
 Bullet = ExtResource("2_pajqg")
 

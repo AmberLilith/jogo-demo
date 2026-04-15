@@ -48,6 +48,7 @@ animations = [{
 }]
 
 [node name="CrentelhaEnemy" type="CharacterBody2D" unique_id=707616710 groups=["enemies"]]
+z_index = 2
 position = Vector2(-1, 1)
 script = ExtResource("1_xvegb")
 
